@@ -1,0 +1,7 @@
+#!/bin/sh
+
+while true; do
+        feh --bg-scale /home/rohan/pics/wallpaper/fibonacci_ruler.png
+        /home/rohan/bin/dwmstat &
+        dwm 2> ~/logs/dwm.log
+done

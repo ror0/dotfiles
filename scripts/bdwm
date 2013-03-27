@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+cd ~/src/dwm
+
+echo Writing to PKGBUILD...
+makepkg -g >> PKGBUILD
+
+echo Building dwm...
+if [ -d "src" ]
+then
+        rm -r src
+fi
+
+if [ -d "pkg" ]
+then
+        rm -r pkg
+fi
+
+if [ -f "dwm-6.0.1-x86_64.pkg.tar.xz" ]
+then
+        rm dwm-6.0.1-x86_64.pkg.tar.xz
+fi
+
+if [ -f "dwm-6.0-tar.gz" ]
+then
+        rm dwm-6.0.tar.gz
+fi
+
+makepkg -fi --noconfirm
