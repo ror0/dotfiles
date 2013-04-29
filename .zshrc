@@ -32,6 +32,9 @@ alias grep='grep --color=auto'
 alias pacman='sudo pacmatic'
 alias svi='sudo vi'
 alias su='su -'
+alias pdf='zathura'
+alias img='sxiv'
+alias systemctl='sudo systemctl'
 #Done
 
 # Prompt

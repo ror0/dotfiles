@@ -10,7 +10,10 @@ red="\x08"
 
 getMpd() {
         title="$(ncmpcpp --now-playing | cut -d " " -f2-)"
-        if [[ $title ]]; then
+        other="$(ncmpcpp --now-playing | cut -d " " -f2)"
+	if [[ $other == "connect" || $other == "" ]]; then
+                echo -ne "${red}\uE05C${grey} stopped" 
+	elif [[ $title ]]; then
                 echo -ne "${cyan}\uE05C${grey}  ${title}"
         fi
 }
@@ -18,22 +21,28 @@ getMpd() {
 getVolume() {
         volume="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
         mute="$(amixer get Master | tail -n1 | awk '{print $6}')"
+        color=""
 
         if [ $mute == "[off]" ]; then
                 volume="0"
+                color="${red}"
         fi
 
         if [ $volume -eq 0 ]; then
                 icon="\uE04F"
+                color="${red}"
         elif [ $volume -le 33 ]; then
                 icon="\uE04E"
+                color="${cyan}"
         elif [ $volume -le 66 ]; then
                 icon="\uE050"
+                color="${cyan}"
         else
                 icon="\uE05D"
+                color="${cyan}"
         fi
 
-        echo -ne "${cyan}${icon}${grey}  ${volume}%"
+        echo -ne "${color}${icon}${grey}  ${volume}%"
 
 }
 
@@ -43,8 +52,6 @@ getNet() {
 
         if [[ $quality -le 35 ]]; then
                 icon="\uE047"
-#        elif [ $quality -le 56 ]; then
-#                icon="\uE04A"
         elif [[ $quality -le 70 ]]; then
                 icon="\uE048"
         fi
@@ -87,6 +94,6 @@ getDate() {
 }
 
 while true; do
-        xsetroot -name "$(getMpd)   $(getVolume)   $(getNet)   $(getBattery)   $(getDate)" 
+	xsetroot -name "$(getMpd)   $(getVolume)   $(getBattery)   $(getNet)   $(getDate)   | " 
         sleep 1
 done

@@ -4,7 +4,7 @@
 static const char font[]            = "-*-stlarch-medium-r-*-*-10-*-*-*-*-*-*-*" "," "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*";
 static const char colors[MAXCOLORS][ColLast][8] = {
 	/* border     fg         bg       */
-	{ "#202020", "#777777", "#000000" }, /* 0 = normal */
+	{ "#202020", "#999999", "#000000" }, /* 0 = normal */
 	{ "#6096bf", "#ffffff", "#000000" }, /* 1 = selected */
 	{ "#ff0000", "#ff0000", "#000000" }, /* 2 = urgent */
 	{ "#222222", "#44cc44", "#000000" }, /* 3 = green */
@@ -74,8 +74,8 @@ static const char *browsercmd[]    = { "chromium", NULL };
 static const char *altbrowsercmd[] = { "dwb", NULL };
 
 static const char *volmcmd[]       = { "amixer", "-q", "sset", "Master", "toggle", NULL };
-static const char *voldcmd[]       = { "amixer", "-q", "sset", "Master", "1-", "unmute", NULL };
-static const char *volucmd[]       = { "amixer", "-q", "sset", "Master", "1+", "unmute", NULL };
+static const char *voldcmd[]       = { "amixer", "-q", "sset", "Master", "9%-", "unmute", NULL };
+static const char *volucmd[]       = { "amixer", "-q", "sset", "Master", "9%+", "unmute", NULL };
 
 static const char *mpdtogglecmd[]  = { "ncmpcpp", "toggle", NULL };
 static const char *mpdprevcmd[]    = { "ncmpcpp", "prev", NULL };

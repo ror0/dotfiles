@@ -32,7 +32,7 @@ URxvt*borderColor:        #151515
 URxvt*colorBD:            #ffffff
 URxvt.scrollBar:          false
 !URxvt*font:               -misc-fixed-medium-r-normal-*-14-*-*-*-*-*-*-*
-URxvt.font:               xft:Inconsolata:size=10
+URxvt.font:               xft:Inconsolata:size=11
 URxvt*letterSpace:        -1
 
 Xft.antialias:            true
