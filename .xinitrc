@@ -25,6 +25,8 @@ xset fp rehash
 # Parse the .Xmodmap file at startx
 xmodmap ~/.Xmodmap
 
+#xrandr --output VGA1 --mode 1280x1024 --output LVDS1 --mode 1366x768 --left-of VGA1
+
 DEFAULT_SESSION=dwm
 case $1 in
         dwm)

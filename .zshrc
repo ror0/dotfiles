@@ -26,21 +26,23 @@ export PATH="${PATH}:${HOME}/bin"
 # Aliases
 alias ls='ls --color=auto'
 alias la='ls -a'
-alias ll='ls -la'
+alias ll='ls -lah'
 alias dir='dir --color=auto'
 alias grep='grep --color=auto'
 alias pacman='sudo pacmatic'
-alias svi='sudo vi'
+alias svi='sudo vim'
+alias vi='vim'
 alias su='su -'
 alias pdf='zathura'
 alias img='sxiv'
 alias systemctl='sudo systemctl'
+alias netcfg='sudo netcfg'
 #Done
 
 # Prompt
 if [[ "$USER" == "root" ]]; then
-        PROMPT="%{$fg[red]%} >  %{$reset_color%}"
-        RPROMPT="%{$fg[red]%}%~%{$reset_color%}"
+        PROMPT="%{$fg[green]%} >  %{$reset_color%}"
+        RPROMPT="%{$fg[green]%}%~%{$reset_color%}"
 else
         PROMPT="%{$fg[blue]%} >  %{$reset_color%}"
         RPROMPT="%{$fg[blue]%}%~%{$reset_color%}"
@@ -62,3 +64,9 @@ zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$VAR)(?)*=00=$color[green]=$
 zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
 zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
 zstyle ':completion:*' menu select
+
+export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/rohan/perl5";
+export PERL_MB_OPT="--install_base /home/rohan/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/rohan/perl5";
+export PERL5LIB="/home/rohan/perl5/lib/perl5:$PERL5LIB";
+export PATH="/home/rohan/perl5/bin:$PATH";

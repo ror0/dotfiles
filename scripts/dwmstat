@@ -9,7 +9,7 @@ magenta="\x07"
 red="\x08"
 
 getMpd() {
-        title="$(ncmpcpp --now-playing | cut -d " " -f2-)"
+        title="$(ncmpcpp --now-playing | cut -d "-" -f2-)"
         other="$(ncmpcpp --now-playing | cut -d " " -f2)"
 	if [[ $other == "connect" || $other == "" ]]; then
                 echo -ne "${red}\uE05C${grey} stopped" 
@@ -90,10 +90,14 @@ getBattery() {
 }
 
 getDate() {
-        echo -ne "${cyan}\uE015${grey}  $(date "+%I:%M %p")  ${cyan}\uE00E"
+	echo -ne "${cyan}\uE01F${grey}  $(date "+%B %e, %Y")"
+}
+
+getTime() {
+        echo -ne "${cyan}\uE015${grey}  $(date "+%I:%M %p")   ${cyan}\uE00E"
 }
 
 while true; do
-	xsetroot -name "$(getMpd)   $(getVolume)   $(getBattery)   $(getNet)   $(getDate)   | " 
+	xsetroot -name "$(getMpd)   $(getVolume)   $(getBattery)   $(getNet)   $(getDate)   $(getTime)   " 
         sleep 1
 done
