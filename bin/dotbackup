@@ -1,12 +1,12 @@
 #!/bin/sh
 
-rsync -va ~/.Xresources ~/backup/dotfiles
-rsync -va ~/.Xmodmap ~/backup/dotfiles
-rsync -va ~/.dircolors ~/backup/dotfiles
-rsync -va ~/.vimrc ~/backup/dotfiles
-rsync -va ~/.xinitrc ~/backup/dotfiles
-rsync -va ~/.zprofile ~/backup/dotfiles
-rsync -va ~/.zshrc ~/backup/dotfiles
+rsync -aP ~/.Xresources ~/backup/dotfiles
+rsync -aP ~/.Xmodmap ~/backup/dotfiles
+rsync -aP ~/.dircolors ~/backup/dotfiles
+rsync -aP ~/.vimrc ~/backup/dotfiles
+rsync -aP ~/.xinitrc ~/backup/dotfiles
+rsync -aP ~/.zprofile ~/backup/dotfiles
+rsync -aP ~/.zshrc ~/backup/dotfiles
 
-rsync -va ~/bin/* --exclude 'cpanm' ~/backup/dotfiles/bin
-rsync -va ~/.vim ~/backup/dotfiles
+rsync -aP --exclude 'cpanm' ~/bin/* ~/backup/dotfiles/bin
+rsync -aP ~/.vim ~/backup/dotfiles
