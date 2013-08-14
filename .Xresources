@@ -1,42 +1,34 @@
 ! vim: set filetype=xdefaults :
-*foreground:  #ffffff
-*background:  #151515
-!*cursorColor: #4E9FB1
+*foreground:		#ffffff
+*background:		#151515
 
 !black
-*color0:     #101010
-*color8:     #404040
+*color0:		#101010
+*color8:		#404040
 !red
-*color1:     #E84F4F
-*color9:     #D23D3D
+*color1:		#E84F4F
+*color9:		#D23D3D
 !green
-*color2:     #B8D68C
-*color10:    #A0CF5D
+*color2:		#B8D68C
+*color10:		#A0CF5D
 !yellow
-*color3:     #E1AA5D
-*color11:    #F39D21
+*color3:		#E1AA5D
+*color11:		#F39D21
 !blue
-*color4:     #7DC1CF
-*color12:    #4E9FB1
+*color4:		#7DC1CF
+*color12:		#4E9FB1
 !magenta
-*color5:     #9B64FB
-*color13:    #8542FF
+*color5:		#9B64FB
+*color13:		#8542FF
 !cyan
-*color6:     #6D878D
-*color14:    #42717B
+*color6:		#6D878D
+*color14:		#42717B
 !white
-*color7:     #dddddd
-*color15:    #dddddd
+*color7:		#dddddd
+*color15:		#dddddd
 
-!URxvt*borderColor:        #151515
-URxvt*colorBD:            #ffffff
-URxvt.scrollBar:          false
-URxvt.font:               xft:Inconsolata:size=11
-URxvt*letterSpace:        -1
-
-Xft.antialias:            true
-!Xft.dpi:                  92
-!Xft.rgba:                 rgb
-!Xft.hinting:              true
-!Xft.autohint:             true
-!Xft.hintstyle:            hintfull
+*locale:		true
+*faceName:		Inconsolata
+*faceSize:		10
+*borderWidth:		0
+*saveLines:		4096

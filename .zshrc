@@ -5,6 +5,11 @@ compinit
 promptinit
 # Done
 
+# Dircolors
+if [[ -a "$HOME/.dircolors" ]]; then
+	eval "$(dircolors -b ~/.dircolors)"
+fi
+
 # Options
 setopt MULTIOS
 setopt CORRECT
@@ -19,24 +24,27 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
 
 export EDITOR="vim"
-export BROWSER="dwb"
-export PATH="${PATH}:${HOME}/bin"
+export BROWSER="firefox"
+export PATH="${PATH}:/home/rohan/bin"
+export LD_LIBRARY_PATH="/usr/local/lib"
+export TERM="xterm-256color"
 # Done
 
 # Aliases
-alias ls='ls --color=auto'
-alias la='ls -a'
-alias ll='ls -lah'
+alias ls='ls --group-directories-first --color=auto -X'
+alias la='ls --group-directories-first --color=auto -Xa'
+alias ll='ls --group-directories-first --color=auto -Xlah'
 alias dir='dir --color=auto'
-alias grep='grep --color=auto'
+alias grep='grep -P --color=auto'
 alias pacman='sudo pacmatic'
 alias svi='sudo vim'
 alias vi='vim'
 alias su='su -'
 alias pdf='zathura'
-alias img='sxiv'
+alias img='mirage'
 alias systemctl='sudo systemctl'
 alias netcfg='sudo netcfg'
+alias reset='reset -Q'
 #Done
 
 # Prompt
@@ -60,9 +68,9 @@ SAVEHIST=1000
 bindkey -v
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$VAR)(?)*=00=$color[green]=$color[bg-green]" )'
-zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
-zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
+#zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$VAR)(?)*=00=$color[green]=$color[bg-green]" )'
+#zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
+#zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
 zstyle ':completion:*' menu select
 
 export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/rohan/perl5";

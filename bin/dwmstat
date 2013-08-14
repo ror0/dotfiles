@@ -47,14 +47,18 @@ getVolume() {
 }
 
 getNet() {
-        current="$(iwgetid -r)"
-        quality="$(cat /proc/net/wireless | tail -n1 | awk '{ print $3 }' | cut -d "." -f1)"
-
-        if [[ $quality -le 35 ]]; then
-                icon="\uE047"
-        elif [[ $quality -le 70 ]]; then
-                icon="\uE048"
-        fi
+        current="$(netcfg current)"
+	
+	if [[ $current == 'usb' ]]; then
+		icon="\uE11f"
+	else
+		quality="$(cat /proc/net/wireless | tail -n1 | awk '{ print $3 }' | cut -d "." -f1)"
+		if [[ $quality -le 35 ]]; then
+			icon="\uE047"
+		elif [[ $quality -le 70 ]]; then
+			icon="\uE048"
+		fi
+	fi
 
         if [ $current ]; then
                 echo -ne "${cyan}${icon}${grey}  ${current}"

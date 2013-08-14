@@ -22,6 +22,13 @@ set wildmenu
 "set lazyredraw
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Markdown .md support
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" Automatically close completion windows
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 " Tab usage
 set smarttab
 "set expandtab
@@ -30,6 +37,7 @@ set smarttab
 syntax enable
 colorscheme jellybeans
 
+" Highlight current line number
 hi clear CursorLine
 augroup CLClear
 	autocmd! ColorScheme * hi clear CursorLine
@@ -38,8 +46,11 @@ hi CursorLineNR cterm=bold
 augroup CLNRSet
 	autocmd! ColorScheme * hi CursorLineNR cterm=bold
 augroup END
-
 set cursorline
+
+" Completion stuff
+let g:clang_user_options='|| exit 0'
+let g:clang_hl_errors='0'
 
 " Mapping
 noremap <F8> :bn<CR>

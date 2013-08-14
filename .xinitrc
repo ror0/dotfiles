@@ -25,19 +25,14 @@ xset fp rehash
 # Parse the .Xmodmap file at startx
 xmodmap ~/.Xmodmap
 
+# Setup dual screens
 #xrandr --output VGA1 --mode 1280x1024 --output LVDS1 --mode 1366x768 --left-of VGA1
 
-DEFAULT_SESSION=dwm
+DEFAULT_SESSION=i3
 case $1 in
-        dwm)
-                ~/bin/dwminit
+        i3)
+                exec i3
                 ;;
-        awesome)
-                exec awesome
-                ;;
-	wmfs)
-		exec wmfs
-		;;
         *)
                 if [ "${DEFAULT_SESSION}" == "dwm" ]
                 then

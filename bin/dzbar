@@ -1,0 +1,7 @@
+#!/bin/sh
+
+FG='#999999'
+BG='#000000'
+FONT='Inconsolata-9.5'
+
+statusbar | dzen2 -ta r -fg $FG -bg $BG -fn $FONT -dock
