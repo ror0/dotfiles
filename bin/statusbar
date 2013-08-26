@@ -9,8 +9,8 @@ cyan="^fg(#6096bf)"
 magenta="^fg(#7E62B3)"
 red="^fg(#e33333)"
 
-# Env Variables
-[ -z $COUNT ] && COUNT="0"
+# Counter
+count="0"
 
 # Constants
 icon_dir="/home/rohan/pics/xbmicons/"
@@ -48,12 +48,25 @@ grid="^i(${icon_dir}grid.xbm)"
 clock="^i(${icon_dir}clock.xbm)"
 
 getMpd() {
-	title="$(ncmpcpp --now-playing | sed 's|.*) \(.*\)|\1|')"
-	if [[ $title == "" ]]; then
-                echo -ne "${red}${note} ${grey}stopped" 
+	running="$(ps aux | grep '[\d] mpd')"
+	message=""
+	color=""
+
+	if [ "$running" == "" ]; then
+		color=${red}
+		message="stopped"
 	else
-                echo -ne "${cyan}${note} ${grey}${title}"
-        fi
+		title="$(ncmpcpp --now-playing | sed 's|.*[)-] \(.*\)|\1|')"
+		if [ "$title" == "" ]; then
+			color=${red}
+			message="stopped"
+		else
+			color=${cyan}
+			message=${title}
+		fi
+	fi
+
+	echo -ne "${color}${note} ${grey}${message}"
 }
 
 getVolume() {
@@ -121,11 +134,7 @@ getBattery() {
         color=${cyan}
 
         if [ ${charging} == "Charging" ]; then
-		if [[ ${count} < "8" ]]; then
-			count=$[count + 1]
-		fi
-
-		case ${count} in
+		case ${1} in
 			"0")
 				icon=${battery10}
 				;;
@@ -181,7 +190,7 @@ getBattery() {
                 fi
         fi
 
-        echo -ne "${color}${icon} ${grey}${count} ${level}%"
+        echo -ne "${color}${icon} ${grey}${level}%"
 }
 
 getDate() {
@@ -194,7 +203,16 @@ getTime() {
         echo -ne "${cyan}${clock} ${grey}$(date "+%I:%M %p")"
 }
 
+getWorkspaces() {
+	echo ""
+}
+
 while true; do
-	echo -e "$(getMpd)  $(getVolume)  $(getBattery)  $(getNet)  $(getDate)  $(getTime)" 
-        sleep 1
+	echo -e "$(getMpd)  $(getVolume)  $(getBattery $count)  $(getNet)  $(getDate)  $(getTime) "
+	if [[ ${count} < "8" ]]; then
+		((count++))
+	else
+		count="0"
+	fi
+	sleep 1
 done

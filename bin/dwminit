@@ -1,8 +1,0 @@
-#!/bin/sh
-
-while true; do
-	feh --bg-scale /home/rohan/pics/wallpaper/fibonacci_ruler.png
-	/home/rohan/bin/statusbar &
-	/home/rohan/bin/setbackground 60173 &
-	dwm
-done

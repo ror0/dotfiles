@@ -3,6 +3,7 @@ autoload -U compinit promptinit colors
 colors
 compinit
 promptinit
+autoload zmv
 # Done
 
 # Dircolors

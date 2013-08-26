@@ -23,7 +23,9 @@ set wildmenu
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Markdown .md support
-au BufRead,BufNewFile *.md set filetype=markdown
+
+" Setting text width
+au BufRead /tmp/mutt-* set tw=72
 
 " Automatically close completion windows
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif

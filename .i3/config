@@ -183,4 +183,4 @@ bar {
 	}
 }
 
-#exec --no-startup-id /home/rohan/bin/setbackground
+exec --no-startup-id feh --bg-fill /home/rohan/pics/wallpaper/mountains.jpg
