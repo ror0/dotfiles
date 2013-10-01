@@ -11,3 +11,5 @@ rsync -aP ~/.zshrc ~/backup/dotfiles
 rsync -aP --exclude 'cpanm' ~/bin/* ~/backup/dotfiles/bin
 rsync -aP ~/.vim ~/backup/dotfiles
 rsync -aP ~/.i3 ~/backup/dotfiles
+rsync -aP ~/.config/bspwm ~/backup/dotfiles
+rsync -aP ~/.config/sxhkd ~/backup/dotfiles
