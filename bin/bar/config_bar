@@ -35,7 +35,7 @@ COLOR_STATUS_BG='#101010'
 app_ypos=19
 
 # Constants
-icon_dir="/home/rohan/pics/xbmicons/"
+icon_dir="$HOME/pics/xbmicons/"
 
 # Icons
 note="^i(${icon_dir}note.xbm)"

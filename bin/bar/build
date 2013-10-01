@@ -146,7 +146,7 @@ while read -r line; do
 			icon=$clock
 			color=$cyan
 
-			timet="^ca(1,/home/rohan/bin/bar/script/cal_app)${color}${icon} ^fg(${COLOR_FOREGROUND})${tim}^ca()"
+			timet="^ca(1,${HOME}/bin/bar/script/cal_app)${color}${icon} ^fg(${COLOR_FOREGROUND})${tim}^ca()"
 			timew=$((9 * textw + 8))
 			;;
 		T*)
