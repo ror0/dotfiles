@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+
+. config_dmenu
+
+if [[ ! $(pgrep mpd) ]]; then
+	mpd
+fi
+
+position="$(mpc playlist -f '%position% %title% - %artist% ' | dmenu -b -i -l 10 -fn 'Inconsolata-9.5' -nb $ibg -nf $ifg -sf $sfg -sb $sbg -p 'Song:'| sed 's|^\([0-9]*\) .*|\1|')"
+
+mpc -q play $position

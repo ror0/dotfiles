@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+rsync -hrvP --stats --delete ./* /srv/http/

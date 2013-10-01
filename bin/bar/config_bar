@@ -1,0 +1,64 @@
+#!/usr/bin/sh
+
+# Bar Config
+font='Inconsolata'
+font_size='12'
+height="20"
+
+# Colors
+grey="^fg(#878787)"
+white="^fg(#dddddd)"
+green="^fg(#A0CF5D)"
+yellow="^fg(#F39D21)"
+cyan="^fg(#7DC1CF)"
+magenta="^fg(#8542FF)"
+red="^fg(#D23D3D)"
+
+COLOR_FOREGROUND='#dddddd'
+COLOR_BACKGROUND='#101010'
+COLOR_ACTIVE_FG='#F7F9FF'
+COLOR_ACTIVE_BG='#5B5955'
+COLOR_INACTIVE_FG='#dddddd'
+COLOR_INACTIVE_BG='#101010'
+COLOR_EMPTY_FG='#707277'
+COLOR_EMPTY_BG='#101010'
+COLOR_URGENT_FG='#101010'
+COLOR_URGENT_BG='#F6A299'
+COLOR_LAYOUT_FG='#53CAD9'
+COLOR_LAYOUT_BG='#101010'
+COLOR_TITLE_FG='#dddddd'
+COLOR_TITLE_BG='#101010'
+COLOR_STATUS_FG='#E6AC80'
+COLOR_STATUS_BG='#101010'
+
+# Position
+app_ypos=19
+
+# Constants
+icon_dir="/home/rohan/pics/xbmicons/"
+
+# Icons
+note="^i(${icon_dir}note.xbm)"
+play="^i(${icon_dir}play.xbm)"
+pause="^i(${icon_dir}pause.xbm)"
+stopico="^i(${icon_dir}stop.xbm)"
+
+speaker_on="^i(${icon_dir}spkr_01.xbm)"
+speaker_off="^i(${icon_dir}spkr_02.xbm)"
+
+wireless1="^i(${icon_dir}wireless1.xbm)"
+wireless2="^i(${icon_dir}wireless2.xbm)"
+wireless3="^i(${icon_dir}wireless3.xbm)"
+wireless4="^i(${icon_dir}wireless4.xbm)"
+wireless5="^i(${icon_dir}wireless5.xbm)"
+
+net_up="^i(${icon_dir}net_up_03.xbm)"
+net_down="^i(${icon_dir}net_down_03.xbm)"
+
+battery_full="^i(${icon_dir}bat_full_01.xbm)"
+battery_low="^i(${icon_dir}bat_low_01.xbm)"
+battery_empty="^i(${icon_dir}bat_empty_01.xbm)"
+
+grid="^i(${icon_dir}grid.xbm)"
+
+clock="^i(${icon_dir}clock.xbm)"

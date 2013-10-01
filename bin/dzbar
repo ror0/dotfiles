@@ -1,7 +1,9 @@
 #!/bin/sh
 
-FG='#999999'
-BG='#000000'
-FONT='Inconsolata-9.5'
+foreg='#999999'
+backg='#101010'
+font='DejaVu Sans'
+font_size='8.5'
+height="16"
 
-statusbar | dzen2 -ta r -fg $FG -bg $BG -fn $FONT -dock
+statusbar | dzen2 -ta c -fg $foreg -bg $backg -fn "$font-$font_size" -h $height -dock

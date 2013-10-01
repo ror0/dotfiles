@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+. config_dmenu
+
+profile="$(ls --group-directories-first -1 /etc/network.d/ | sed '1,2d' | dmenu -b -p 'Network:' -fn 'Inconsolata-9.5' -nb $ibg -nf $ifg -sf $sfg -sb $sbg)"
+
+sudo netcfg $profile

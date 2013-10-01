@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+ifg='#dddddd'
+ibg='#101010'
+sfg='#F7F9FF'
+sbg='#5B5955'

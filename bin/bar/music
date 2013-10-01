@@ -1,0 +1,16 @@
+#!/usr/bin/sh
+
+while true; do
+	if [[ $(pgrep mpd) ]]; then
+		title="$(mpc current -f %title%)"
+		stats="$(mpc | sed '2!d;s|^\[\([a-z]*\).*|\1|')"
+		if [[ $title ]]; then
+			echo -e "M$title:$stats"
+		else
+			echo -e "Mstopped:$stats"
+		fi
+	else
+		echo -e "Mstopped"
+	fi
+	sleep 1
+done

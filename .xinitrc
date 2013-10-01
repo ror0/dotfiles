@@ -28,15 +28,24 @@ xmodmap ~/.Xmodmap
 # Setup dual screens
 #xrandr --output VGA1 --mode 1280x1024 --output LVDS1 --mode 1366x768 --left-of VGA1
 
-DEFAULT_SESSION=i3
+DEFAULT_SESSION=bspwm
 case $1 in
         i3)
                 exec i3
                 ;;
+        bspwm)
+		sxhkd &
+		[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+		mkfifo "$PANEL_FIFO"
+		exec bspwm -s "$PANEL_FIFO" -p W 2> ~/.bspwm.log
+                ;;
         *)
-                if [ "${DEFAULT_SESSION}" == "dwm" ]
+                if [ "${DEFAULT_SESSION}" == "bspwm" ]
                 then
-                        ~/bin/dwminit
+			sxhkd &
+			[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+			mkfifo "$PANEL_FIFO"
+			exec bspwm -s "$PANEL_FIFO" -p W 2> ~/.bspwm.log
                 else
                         exec $DEFAULT_SESSION
                 fi

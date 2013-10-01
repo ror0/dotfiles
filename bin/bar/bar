@@ -1,0 +1,16 @@
+#!/usr/bin/sh
+
+bspc control --put-status
+xtitle -sf 'T%s' > "$PANEL_FIFO" &
+clock -sf 'C%I:%M %p' > "$PANEL_FIFO" & 
+bat > "$PANEL_FIFO" &
+music > "$PANEL_FIFO" &
+net > "$PANEL_FIFO" &
+vol > "$PANEL_FIFO" &
+
+. config_bar
+
+#cat "$PANEL_FIFO" | dzen -f "$font" -s "$font_size" | dzen2 -h $height -dock -ta l -title-name panel -fn "${font}:pixelsize=${font_size}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" &
+cat "$PANEL_FIFO" | build | dzen2 -h $height -dock -ta l -title-name panel -fn "${font}:pixelsize=${font_size}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" -e "button3=" &
+
+wait

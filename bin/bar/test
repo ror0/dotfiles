@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+
+xtitle -sf 'T%s' > "$PANEL_FIFO" &
+clock -sf 'C%H:%M %p' > "$PANEL_FIFO" & 
+bat > "$PANEL_FIFO" &
+music > "$PANEL_FIFO" &
+net > "$PANEL_FIFO" &
+vol > "$PANEL_FIFO" &
+
+cat "$PANEL_FIFO" | build
