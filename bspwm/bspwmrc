@@ -1,0 +1,24 @@
+#!/usr/bin/sh
+
+bspc desktop ^1 --rename I
+bspc monitor --add-desktops II III IV V VI VII VIII IX X
+
+bspc rule --add Gimp -d ^8 --follow --floating
+bspc rule --add xcalc --floating
+bspc rule --add mirage --floating
+
+bspc config split_ratio			0.5
+bspc config border_width		2
+bspc config window_gap			12
+bspc config top_padding			20
+bspc config borderless_monocle		true
+bspc config gapless_monocle		true
+bspc config auto_cancel			true
+bspc config focused_border_color	\#4E9FB1
+
+bspc control --put-status
+
+feh --bg-fill /home/rohan/pics/wallpaper/light_wood.jpg
+xsetroot -cursor_name left_ptr
+compton -bfcG -r 8 -l -5 -t -5 -D 5
+bar &
