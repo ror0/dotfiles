@@ -75,7 +75,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select
 
 export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/rohan/perl5";
-export PERL_MB_OPT="--install_base /home/rohan/perl5";
-export PERL_MM_OPT="INSTALL_BASE=/home/rohan/perl5";
-export PERL5LIB="/home/rohan/perl5/lib/perl5:$PERL5LIB";
-export PATH="/home/rohan/perl5/bin:$PATH";
+export PERL_MB_OPT="--install_base ${HOME}/perl5";
+export PERL_MM_OPT="INSTALL_BASE=${HOME}/rohan/perl5";
+export PERL5LIB="${HOME}/perl5/lib/perl5:$PERL5LIB";
+export PATH="${HOME}/perl5/bin:$PATH";
