@@ -7,3 +7,5 @@ width=$((64 * textw))
 xpos=$(getcurpos -x)
 
 (echo "Calendar";cal -3;sleep 15) | dzen2 -l 8 -x $xpos -y 19 -w $width -fn "$font:pixelsize=$font_size" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" -e "onstart=uncollapse,hide;button1=exit;button3=exit"
+
+killall cal_app

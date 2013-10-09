@@ -1,7 +1,6 @@
 #!/usr/bin/sh
 
-bspc desktop ^1 --rename I
-bspc monitor --add-desktops II III IV V VI VII VIII IX X
+bspc monitor --reset-desktops I II III IV V VI VII VIII IX X
 
 bspc rule --add Gimp -d ^8 --follow --floating
 bspc rule --add xcalc --floating

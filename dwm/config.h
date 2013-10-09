@@ -1,5 +1,3 @@
-/* Rohan File */
-
 /* appearance */
 static const char font[]            = "-*-stlarch-medium-r-*-*-10-*-*-*-*-*-*-*" "," "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*";
 static const char colors[MAXCOLORS][ColLast][8] = {
@@ -34,27 +32,27 @@ static const int nmaster      = 1;     /* number of clients in master area */
 static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ " \uE001  | ",      monocle },        /* first entry is default */
-	{ " \uE002  | ",      tile },
-	{ " \uE010  | ",      NULL },        /* no layout function means floating behavior */
-	{ " \uE003  | ",      bstack },
-	{ " \uE005  | ",      gaplessgrid },
-	{ " \uE009  | ",      pidgin },
+	/* symbol		arrange function */
+	{ " \uE001  | ",	monocle },        /* first entry is default */
+	{ " \uE002  | ",	tile },
+	{ " \uE010  | ",	NULL },        /* no layout function means floating behavior */
+	{ " \uE003  | ",	bstack },
+	{ " \uE005  | ",	gaplessgrid },
+	{ " \uE009  | ",	pidgin },
 };
 
 /* tagging */
 static const Tag tags[] = {
-	/* name                layout           mfact    nmaster */
-	{ "1",	   &layouts[0],     -1,      -1 },
-	{ "2",     &layouts[0],     -1,      -1 },
-	{ "3",     &layouts[0],     -1,      -1 },
-	{ "4",     &layouts[0],     -1,      -1 },
-	{ "5",     &layouts[0],     -1,      -1 },
-	{ "6",     &layouts[0],     -1,      -1 },
-	{ "7",     &layouts[0],     -1,      -1 },
-	{ "8",     &layouts[0],     -1,      -1 },
-	{ "9  |",     &layouts[0],     -1,      -1 }, };
+	/* name		layout           mfact    nmaster */
+	{ "1",		&layouts[0],     -1,      -1 },
+	{ "2",		&layouts[0],     -1,      -1 },
+	{ "3",		&layouts[0],     -1,      -1 },
+	{ "4",		&layouts[0],     -1,      -1 },
+	{ "5",		&layouts[0],     -1,      -1 },
+	{ "6",		&layouts[0],     -1,      -1 },
+	{ "7",		&layouts[0],     -1,      -1 },
+	{ "8",		&layouts[0],     -1,      -1 },
+	{ "9  |",	&layouts[0],     -1,      -1 }, };
 
 /* key definitions */
 #define ALTKEY Mod1Mask

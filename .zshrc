@@ -36,7 +36,7 @@ alias la='ls --group-directories-first --color=auto -Xa'
 alias ll='ls --group-directories-first --color=auto -Xlah'
 alias dir='dir --color=auto'
 alias grep='grep -P --color=auto'
-alias pacman='sudo pacmatic'
+alias pacman='sudo pacman'
 alias svi='sudo vim'
 alias vi='vim'
 alias su='su -'
@@ -74,8 +74,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 #zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
 zstyle ':completion:*' menu select
 
-export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/rohan/perl5";
+export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:${HOME}/perl5";
 export PERL_MB_OPT="--install_base ${HOME}/perl5";
-export PERL_MM_OPT="INSTALL_BASE=${HOME}/rohan/perl5";
+export PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5";
 export PERL5LIB="${HOME}/perl5/lib/perl5:$PERL5LIB";
 export PATH="${HOME}/perl5/bin:$PATH";

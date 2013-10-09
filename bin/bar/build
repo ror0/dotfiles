@@ -35,6 +35,8 @@ empty_width=""
 IFS=":"
 textw=$(txtw -f $font -s $font_size " ")
 
+#startt="  ^ca(1,${HOME}/bin/bar/scripts/bar)start^ca()"
+
 while read -r line; do
 	case $line in
 		N*)
@@ -136,9 +138,9 @@ while read -r line; do
 				color=$cyan
 			fi
 
-			mpdt=" ${color}${icon} ^fg(${COLOR_FOREGROUND})${title}"
+			mpdt="  ${color}${icon} ^fg(${COLOR_FOREGROUND})${title}"
 			songw="$(txtw -f $font -s $font_size $title)"
-			mpdw=$((9 + textw + songw))
+			mpdw=$((9 + (2*textw) + songw))
 			;;
 		C*)
 			# Time info
@@ -159,7 +161,7 @@ while read -r line; do
 		W*)
 			# Window Manager informations
 			set -- ${line#?}
-			wmt="  "
+			wmt=" "
 			while [ $# -gt 0 ] ; do
 				item=$1
 				case $item in
@@ -199,5 +201,5 @@ while read -r line; do
 			;;
 	esac
 	ypos=$((1366 - (mpdw + netw + batw + volw + timew + textw * 4 * 4 + textw * 3)))
-	echo -e "${wmt} ${layt}  ${titt}^pa($ypos)${mpdt}${padding}${nett}${padding}${batt}${padding}${volt}${padding}${timet}"
+	echo -e "${startt}${wmt} ${layt}  ${titt}^pa($ypos)${mpdt}${padding}${nett}${padding}${batt}${padding}${volt}${padding}${timet}"
 done
