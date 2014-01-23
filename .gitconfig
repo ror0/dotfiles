@@ -1,0 +1,19 @@
+[user]
+	email = stykrrr@gmail.com
+	name = stykr
+[color]
+	ui = true
+	interactive = auto
+	diff = auto
+	branch = auto
+[format]
+	pretty = medium
+[push]
+	default = simple
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 1364x726+0+20
+	file-view-vpane-position = 470
+	main-window-view = FileView
+[core]
+	excludesfile = ~/.gitignore

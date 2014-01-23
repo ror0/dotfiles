@@ -27,8 +27,15 @@
 *color7:		#dddddd
 *color15:		#dddddd
 
-*locale:		true
-*faceName:		Inconsolata
-*faceSize:		10
-*borderWidth:		0
-*saveLines:		4096
+xterm*locale:		true
+xterm*faceName:		Inconsolata:antialias=true
+xterm*faceSize:		10
+xterm*borderWidth:	0
+xterm*saveLines:	4096
+
+URxvt.scrollBar:	false
+URxvt.font:		xft:Inconsolata:size=10:antialias=true
+URxvt.letterSpace:	-1
+
+st*faceName:		Inconsolata:antialias=true
+st*faceSize:		10

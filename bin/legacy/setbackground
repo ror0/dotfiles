@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-dir="/home/rohan/pics/wallpaper/weather/"
+dir="${HOME}/pics/wallpaper/weather/"
 #weather="$(weather 60173 | cut -d ':' -f1 | cut -d ' ' -f2)"
 weather="$(weather 60173 | sed -nr 's/.*?([A-Z][a-z]+):.*/\1/p')"
 echo $weather

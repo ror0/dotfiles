@@ -2,9 +2,9 @@
 
 bspc monitor --reset-desktops I II III IV V VI VII VIII IX X
 
-bspc rule --add Gimp -d ^8 --follow --floating
-bspc rule --add xcalc --floating
-bspc rule --add mirage --floating
+bspc rule --add Gimp follow=true floating=true
+bspc rule --add xcalc floating=true
+bspc rule --add mirage floating=true
 
 bspc config split_ratio			0.5
 bspc config border_width		2
@@ -14,8 +14,6 @@ bspc config borderless_monocle		true
 bspc config gapless_monocle		true
 bspc config auto_cancel			true
 bspc config focused_border_color	\#4E9FB1
-
-bspc control --put-status
 
 feh --bg-fill $HOME/pics/wallpaper/light_wood.jpg
 xsetroot -cursor_name left_ptr

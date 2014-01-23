@@ -23,6 +23,11 @@ super + {grave,Tab}
 super + apostrophe
     bspc window --swap last
 
+super + {o,i}
+    bspc control --record-history off; \
+    bspc window {older,newer} --focus; \
+    bspc control --record-history on
+
 super + y
     bspc window --to-window last.manual
 
@@ -51,10 +56,10 @@ super + ctrl + {_,shift + }space
     bspc {window --presel cancel,desktop --cancel-presel}
 
 super + alt + {h,j,k,l}
-    bspc window --edge {left,down,up,right} push
+    bspc window --edge {left -5,down +5,up -5,right +5}
 
 super + alt + shift + {h,j,k,l}
-    bspc window --edge {right,up,down,left} pull
+    bspc window --edge {right -5,up +5,down -5,left +5}
 
 super + ctrl + {1-9}
     bspc window --ratio 0.{1-9}
@@ -71,12 +76,15 @@ super + button{1-3}
 super + !button{1-3}
     bspc pointer --track %i %i
 
+super + @button{1-3}
+    bspc pointer --ungrab
+
 #
 # wm independent hotkeys
 #
 
 alt + Return
-    xterm
+    uxterm
 
 alt + space
     dmenu_run -b -fn 'Inconsolata-9.5' -nb '#101010' -nf '#dddddd' -sf '#F7F9FF' -sb '#5B5955'

@@ -27,7 +27,6 @@ setopt HIST_NO_STORE
 export EDITOR="vim"
 export BROWSER="firefox"
 export LD_LIBRARY_PATH="/usr/local/lib"
-export TERM="xterm-256color"
 # Done
 
 # Aliases
@@ -46,6 +45,7 @@ alias systemctl='sudo systemctl'
 alias netcfg='sudo netcfg'
 alias reset='reset -Q'
 alias ":q"='echo "FOOL! You are not in VIM!"'
+alias "q"='echo "FOOL! You are not in VIM!"'
 #Done
 
 # Prompt

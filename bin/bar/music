@@ -12,5 +12,5 @@ while true; do
 	else
 		echo -e "Mstopped"
 	fi
-	sleep 1
+	sleep 2
 done

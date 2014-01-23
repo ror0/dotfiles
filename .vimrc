@@ -4,34 +4,26 @@ filetype indent on
 
 " Search
 set ignorecase
-"set hlsearch
 set smartcase
 
 " Sidebar
 set number
-"set relativenumber
 set ruler
+
+" Font
+set guifont=Inconsolata
 
 " Other
 set nocompatible
 set clipboard=unnamed
 set showcmd
-set autoindent
-set smartindent
-set wildmenu
-"set lazyredraw
+set showmode
+
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Markdown .md support
-
-" Setting text width
-au BufRead /tmp/mutt-* set tw=72
-
-" Automatically close completion windows
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
 " Tab usage
+set autoindent
+set smartindent
 set smarttab
 "set expandtab
 
@@ -51,8 +43,23 @@ augroup END
 set cursorline
 
 " Completion stuff
-let g:clang_user_options='|| exit 0'
-let g:clang_hl_errors='0'
+set wildmenu
+
+" YCM settings
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-N>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-P>']
+let g:ycm_auto_trigger = 1
+let g:ycm_complete_in_strings = 0
+let g:ycm_filetype_whitelist = {
+			\ 'cpp': 1,
+			\ 'c': 1,
+			\ 'python': 1,
+			\ 'perl': 1
+			\}
+"end
 
 " Mapping
 noremap <F8> :bn<CR>

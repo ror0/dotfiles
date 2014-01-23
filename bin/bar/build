@@ -10,6 +10,7 @@ timew=0
 
 batt=""
 batw=0
+
 mpdt=""
 mpdw=0
 
@@ -89,7 +90,7 @@ while read -r line; do
 			width=$((level / 2))
 			empty_width=$((50 - width))
 
-			volt="^ca(1, amixer set Master toggle -q)${color}${icon}^ca() ${white}^r(${width}x1)${grey}^r(${empty_width}x1)"
+			volt="${color}${icon} ${white}^r(${width}x1)${grey}^r(${empty_width}x1)"
 			volw=$((8 + 50 + textw))
 			;;
 		B*)

@@ -3,9 +3,17 @@
 . config_bar
 
 textw=$(txtw -f $font -s $font_size " ")
-width=$((64 * textw))
+width=$((24 * textw))
 xpos=$(getcurpos -x)
 
-(echo "Calendar";cal -3;sleep 15) | dzen2 -l 8 -x $xpos -y 19 -w $width -fn "$font:pixelsize=$font_size" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" -e "onstart=uncollapse,hide;button1=exit;button3=exit"
+#(echo "Calendar";cal -3;sleep 15) | dzen2 -l 8 -x $xpos -y 19 -w $width -fn "$font:pixelsize=$font_size" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" -e "onstart=uncollapse,hide;button1=exit;button3=exit"
 
-killall cal_app
+#killall cal_app
+
+today=$(clock -f %d | sed 's/0\([0-9]\)/\1/')
+
+while true; do
+	echo "Calendar"
+	cal | sed -r -e "1,2 s/.*/^fg(white)&^fg()/" -e "s/(^| )($today)($| )/\1^bg(white)^fg(#111)\2^fg()^bg()\3/" | sed 's/\(.*\)/  \1/'
+	sleep 8
+done | dzen2 -l 8 -x $xpos -y 19 -w $width -fn "$font:pixelsize=$font_size" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" -e "onstart=uncollapse,hide;button1=exit;button3=exit"

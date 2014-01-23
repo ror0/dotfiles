@@ -1,6 +1,14 @@
 #!/usr/bin/sh
 
-bspc control --put-status
+if [ $(pgrep -cx bar) -gt 1 ] ; then
+    printf "%s\n" "The panel is already running." >&2
+    exit 1
+fi
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 clock -sf 'C%I:%M %p' > "$PANEL_FIFO" & 
 bat > "$PANEL_FIFO" &
