@@ -1,6 +1,0 @@
-#!/usr/bin/sh
-
-while true; do
-	echo "V$(amixer get Master | sed '1,4d;s|.*\[\(.*\)\]$|\1|'):$(amixer get Master | sed '1,4d;s|.*\[\(.*\)%\].*|\1|')"
-	sleep 1
-done

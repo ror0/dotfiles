@@ -4,7 +4,7 @@
 
 !black
 *color0:		#101010
-*color8:		#404040
+*color8:		#151515
 !red
 *color1:		#E84F4F
 *color9:		#D23D3D
@@ -25,7 +25,7 @@
 *color14:		#42717B
 !white
 *color7:		#dddddd
-*color15:		#dddddd
+*color15:		#ffffff
 
 xterm*locale:		true
 xterm*faceName:		Inconsolata:antialias=true
@@ -35,7 +35,13 @@ xterm*saveLines:	4096
 
 URxvt.scrollBar:	false
 URxvt.font:		xft:Inconsolata:size=10:antialias=true
-URxvt.letterSpace:	-1
+URxvt.perl-ext-common:	tabbedex
 
-st*faceName:		Inconsolata:antialias=true
-st*faceSize:		10
+URxvt.tabbed.autohide: true
+
+URxvt.tabbed.tabbar-fg:	15
+URxvt.tabbed.tabbar-bg:	8
+URxvt.tabbed.tab-fg:	15
+URxvt.tabbed.tab-bg:	14
+URxvt.keysym.Control-Shift-Left: perl:tabbex:move_tab_left
+URxvt.keysym.Control-Shift-Right: perl:tabbex:move_tab_right

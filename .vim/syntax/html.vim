@@ -17,6 +17,14 @@
 " Modified:     htdebeer <H.T.de.Beer@gmail.com>
 " Changes:      add common SVG elements and attributes for inline SVG
 
+" Django support
+syn region  djangotagmarkers start="{{" end="}}"
+syn region  djangovariablemarkers start="{%" end="%}"
+command! -nargs=+ HiLink hi def link <args>
+HiLink djangotagmarkers PreProc
+HiLink djangovariablemarkers PreProc
+delcommand HiLink
+
 " HTML 5 tags
 syn keyword htmlTagName contained article aside audio canvas command
 syn keyword htmlTagName contained datalist details dialog embed figcaption figure footer

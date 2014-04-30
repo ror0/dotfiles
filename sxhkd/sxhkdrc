@@ -3,6 +3,7 @@
 #
 
 super + alt + Escape
+    kill_bar
     bspc quit
 
 super + q
@@ -84,7 +85,7 @@ super + @button{1-3}
 #
 
 alt + Return
-    uxterm
+    urxvt
 
 alt + space
     dmenu_run -b -fn 'Inconsolata-9.5' -nb '#101010' -nf '#dddddd' -sf '#F7F9FF' -sb '#5B5955'

@@ -20,3 +20,10 @@ bin/
 lib/
 
 .ycm_extra_conf.py*
+.tags
+.types-*
+tags
+types-*
+
+*.zip
+*.swp

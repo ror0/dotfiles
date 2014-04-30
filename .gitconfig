@@ -17,3 +17,5 @@
 	main-window-view = FileView
 [core]
 	excludesfile = ~/.gitignore
+[credential]
+	helper = cache

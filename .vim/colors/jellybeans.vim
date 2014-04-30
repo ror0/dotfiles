@@ -321,7 +321,7 @@ call s:X("Todo","808080","","bold","White",s:termBlack)
 
 call s:X("StatusLine","000000","dddddd","italic","","White")
 call s:X("StatusLineNC","ffffff","403c41","italic","White","Black")
-call s:X("VertSplit","777777","403c41","",s:termBlack,s:termBlack)
+call s:X("VertSplit","777777","777777","",s:termBlack,s:termBlack)
 call s:X("WildMenu","f0a0c0","302028","","Magenta","")
 
 call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
@@ -378,6 +378,19 @@ call s:X("DiffAdd","D2EBBE","437019","","White","DarkGreen")
 call s:X("DiffDelete","40000A","700009","","DarkRed","DarkRed")
 call s:X("DiffChange","","2B5B77","","White","DarkBlue")
 call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
+
+" Additional for Tag Highlighting
+hi! link DefinedName PreProc
+hi! link Enumerator Identifier
+hi! link EnumerationName Special
+hi! link Member Normal
+hi! link GlobalConstant Normal
+hi! link GlobalVariable Normal
+hi! link LocalVariable Normal
+hi! link Union Identifier
+hi! link Namespace Constant
+hi! link Class Special
+"end
 
 " PHP
 

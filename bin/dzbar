@@ -1,9 +1,0 @@
-#!/bin/sh
-
-foreg='#999999'
-backg='#101010'
-font='DejaVu Sans'
-font_size='8.5'
-height="16"
-
-statusbar | dzen2 -ta c -fg $foreg -bg $backg -fn "$font-$font_size" -h $height -dock

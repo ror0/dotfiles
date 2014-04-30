@@ -8,4 +8,6 @@ augroup filetypedetect
 	au BufRead,BufNewFile *.md				setf markdown
 	au BufRead,BufNewFile *[tT][oO][dD][oO]			setf todo
 	au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl	setf glsl 
+	au BufNewFile,BufRead .tmux.conf*,tmux.conf*		setf tmux
+
 augroup END

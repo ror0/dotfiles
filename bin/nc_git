@@ -1,3 +1,0 @@
-#!/usr/bin/sh
-
-git filter-branch -f --env-filter "GIT_AUTHOR_NAME='stykr'; GIT_AUTHOR_EMAIL='stykrrr@gmail.com'; GIT_COMMITTER_NAME='stykr'; GIT_COMMITTER_EMAIL='stykrrr@gmail.com';" HEAD
