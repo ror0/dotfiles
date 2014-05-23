@@ -1,156 +1,215 @@
-filetype on
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Source plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+silent so ~/.vim/plugins.vim
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sets how many lines of history VIM has to remember
+set history=700
+
+" Enable filetype plugins
 filetype plugin on
 filetype indent on
 
-" Search
-set ignorecase
-set smartcase
-set incsearch
-"end
+" Set to auto read when a file is changed from the outside
+set autoread
 
-" Sidebar
-set number
-set ruler
-"end
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
-" GUI Options
-set guifont=Inconsolata
-set guioptions-=m  "menu bar
-set guioptions-=T  "toolbar
-set guioptions-=r  "scrollbar
-"end
-
-" Other
-set nocompatible
-set clipboard=unnamed
-set showcmd
-set showmode
-"set nowrap
-"end
+" Fast saving
+nmap <leader>w :w!<cr>
 
 " Prevent vim from auto inserting comments on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-"end
 
-" Tab usage
-set autoindent
-set smartindent
-set smarttab
-"end
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Other interface settings
+set clipboard=unnamed
+set showcmd
+set showmode
 
-" Colorscheme
-syntax enable
-colorscheme jellybeans
-"end
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=3
+
+" Turn on the WiLd menu
+set wildmenu
+set wildmode=longest,list:longest
+
+" Ignore compiled files
+"set wildignore=*.o,*~,*.pyc
+
+"Always show current position
+set number
+set ruler
 
 " Highlight current line number
 hi clear CursorLine
 augroup CLClear
-	autocmd! ColorScheme * hi clear CursorLine
+autocmd! ColorScheme * hi clear CursorLine
 augroup END
 hi CursorLineNR cterm=bold
 augroup CLNRSet
-	autocmd! ColorScheme * hi CursorLineNR cterm=bold
+autocmd! ColorScheme * hi CursorLineNR cterm=bold
 augroup END
 set cursorline
-"end
 
-" Completion stuff
-set wildmenu
-"end
+" A buffer becomes hidden when it is abandoned
+set hid
 
-" YCM settings
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-N>']
-let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-P>']
-let g:ycm_auto_trigger = 1
-let g:ycm_complete_in_strings = 0
-let g:ycm_filetype_whitelist = {
-			\ 'cpp': 1,
-			\ 'c': 1,
-			\ 'python': 1,
-			\ 'html': 1,
-			\ 'php': 1,
-			\ 'css': 1,
-			\ 'perl': 1
-			\}
-"end
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
 
-"Taglist
-let Tlist_Use_Right_Window = 1
-"end
+" Ignore case when searching
+set ignorecase
 
-" Status line
-set modeline
-set ls=2
+" When searching try to be smart about cases 
+set smartcase
 
-hi User1	ctermfg=3	ctermbg=0
-hi User2	ctermfg=1	ctermbg=0
-hi User3	ctermfg=5	ctermbg=0
-hi User4	ctermfg=2	ctermbg=0
-hi User5	ctermfg=11	ctermbg=0
+" Highlight search results
+"set hlsearch
 
-set statusline=
-set statusline +=%1*\ %n\ %*            "buffer number
-set statusline +=%5*%{&ff}%*            "file format
-set statusline +=%3*%y%*                "file type
-set statusline +=%4*\ %<%F%*            "full path
-set statusline +=%2*%m%*                "modified flag
-set statusline +=%1*%=%5l%*             "current line
-set statusline +=%2*/%L%*               "total lines
-set statusline +=%1*%4v\ %*             "virtual column number
-set statusline +=%2*0x%04B\ %*          "character under cursor
-"end
+" Makes search act like search in modern browsers
+set incsearch
 
-" Mapping
-noremap <F8> :bn<CR>
-noremap <F7> :bd<CR>
-noremap <F6> :bp<CR>
-noremap <F5> :b#<CR>
-noremap <F3> :TlistToggle<CR>
-noremap <F2> :NERDTreeToggle<CR>
-nnoremap <F9> <C-W>v
-nnoremap <F10> <C-W>s
-nnoremap <F11> <C-W>q
-nnoremap <F11> <C-W>q
-nnoremap <Left> <C-w>h
-nnoremap <Down> <C-w>j
-nnoremap <Up> <C-w>k
-nnoremap <Right> <C-w>l
-nnoremap <S-Left> gT
-nnoremap <S-Right> gt
-map H ^
-map L $
-nnoremap ; :
-"end
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
 
-" Omnifunc settings
-if has("autocmd")
-	autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-	autocmd FileType python setlocal omnifunc=youcompleteme#OmniComplete
-	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-	autocmd FileType c setlocal omnifunc=ccomplete#Complete
-	autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-endif 
-"end
+" For regular expressions turn magic on
+set magic
 
-" Change directory to the current buffer when opening files.
-"set autochdir
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
 
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
 
-" Close all open buffers on entering a window if the only
-" buffer that's left is the NERDTree buffer
-function! s:CloseIfOnlyNerdTreeLeft()
-	if exists("t:NERDTreeBufName")
-		if bufwinnr(t:NERDTreeBufName) != -1
-			if winnr("$") == 1
-				q
-			endif
-		endif
-	endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable syntax highlighting
+syntax enable
+
+colorscheme jellybeans
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T   "toolbar
+    set guioptions-=m   "menu bar
+    set guioptions-=r   "scrollbar
+    set guioptions-=e   "tabs
+    set t_Co=256
+    set guitablabel=%M\ %t
+
+    " Set the font for each operating system
+    if has("gui_gtk2")
+        set guifont=Inconsolata\ 12
+    elseif has("gui_macvim")
+        set guifont=Menlo\ Regular:h14
+    elseif has("gui_win32")
+        set guifont=Consolas:h10:cANSI
+    endif
+endif
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Be smart when using tabs ;)
+set smarttab
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set autoindent "Auto indent
+set smartindent "Smart indent
+set wrap "Wrap lines
+
+
+""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
+
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Completion stuff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set omnifunc=syntaxcomplete#Complete
+set completeopt=menuone,longest
+
+" Enable omnicomplete functions
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType python setlocal omnifunc=youcompleteme#OmniComplete
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+"autocmd FileType c setlocal omnifunc=ccomplete#Complete
+"autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Other
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
 endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Source mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+silent so ~/.vim/mappings.vim

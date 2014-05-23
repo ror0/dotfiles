@@ -28,9 +28,6 @@ xset -b
 DEFAULT_SESSION=bspwm
 #case $1 in
 case $DEFAULT_SESSION in
-        openbox)
-                exec openbox-session
-                ;;
         bspwm)
 		sxhkd &
 		exec bspwm

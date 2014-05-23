@@ -85,7 +85,7 @@ super + @button{1-3}
 #
 
 alt + Return
-    urxvt
+    uxterm
 
 alt + space
     dmenu_run -b -fn 'Inconsolata-9.5' -nb '#101010' -nf '#dddddd' -sf '#F7F9FF' -sb '#5B5955'

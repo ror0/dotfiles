@@ -27,3 +27,5 @@ types-*
 
 *.zip
 *.swp
+
+.*
