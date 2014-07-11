@@ -3,7 +3,7 @@
 #
 
 super + alt + Escape
-    kill_bar
+    kill_bar; \
     bspc quit
 
 super + q
