@@ -1,0 +1,36 @@
+ForegroundColour=	255, 255, 255
+BackgroundColour=	21, 21, 21
+CursorColour=		255, 255, 255
+
+Black=			16, 16, 16
+BoldBlack=		21, 21, 21
+
+Red=			232, 79, 79
+BoldRed=		210, 61, 61
+
+Green=			184, 214, 140
+BoldGreen=		160, 207, 93
+
+Yellow=			225, 170, 93
+BoldYellow=		243, 157, 33
+
+Blue=			125, 193, 207
+BoldBlue=		78, 159, 177
+
+Magenta=		155, 100, 251
+BoldMagenta=		133, 66, 255
+
+Cyan=			109, 135, 141
+BoldCyan=		66, 113, 123
+
+White=			221, 221, 221
+BoldWhite=		255, 255, 255
+
+CursorType=		block
+Font=			Consolas
+Scrollbar=		none
+PgUpDnScroll=		yes
+Term=			xterm-256color
+Locale=			en_US
+Charset=		UTF-8
+BoldAsFont=		no
