@@ -13,10 +13,10 @@ if [[ -a "$HOME/.dircolors" ]]; then
 fi
 
 # Options
-setopt MULTIOS
-setopt CORRECT
+setopt multios
+setopt correct
 #setopt GLOB_COMPLETE
-setopt NO_BEEP
+setopt no_beep
 #setopt NO_CASE_GLOB
 #setopt EXTENDED_GLOB
 setopt HIST_IGNORE_DUPS
@@ -24,7 +24,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
-setopt PROMPT_SUBST
+setopt prompt_subst
 
 export EDITOR="vim"
 export BROWSER="firefox"
@@ -54,25 +54,29 @@ alias "q"='echo "FOOL! You are not in VIM!"'
 #Done
 
 # Prompt
-zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
-zstyle ':vcs_info:*' enable git cvs svn
-
-# or use pre_cmd, see man zshcontrib
-vcs_info_wrapper() {
-	vcs_info
-	if [ -n "$vcs_info_msg_0_" ]; then
-		echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+zstyle ':vcs_info:*' stagedstr '*'
+zstyle ':vcs_info:*' unstagedstr '*'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' actionformats '%F{5}(% %f%r% %F{5})% %F{3}-% %F{5}[% %F{2}%b% %F{3}|% $F{1}%a% %F{5}]% %F{3}%u% %F{2}%c% %f'
+zstyle ':vcs_info:*' formats '%F{5}(% %f%r% %F{5})% %F{3}-% %F{5}[% %F{2}%b% %F{5}]% %F{3}%u% %F{2}%c% %f'
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+zstyle ':vcs_info:*' enable git
++vi-git-untracked() {
+	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
+		hook_com[unstaged]+='%F{1}*%f'
 	fi
 }
 
+precmd () { vcs_info }
+
 if [[ "$USER" == "root" ]]; then
-	PROMPT="%{$fg[green]%} >  %{$reset_color%}"
+	PROMPT='${vcs_info_msg_0_}'
+	PROMPT+="%{$fg[green]%} >  %{$reset_color%}"
 	RPROMPT="%{$fg[green]%}%~%{$reset_color%}"
 else
-	PROMPT="%{$fg[blue]%} >  %{$reset_color%}"
-	RPROMPT="%{$fg[blue]%}%~$(vcs_info_wrapper)%{$reset_color%}"
+	PROMPT='${vcs_info_msg_0_}'
+	PROMPT+="%{$fg[blue]%} >  %{$reset_color%}"
+	RPROMPT="%{$fg[blue]%}%~%{$reset_color%}"
 fi
 
 # Done
