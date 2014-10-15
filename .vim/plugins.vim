@@ -34,10 +34,15 @@ Plugin 'leafo/moonscript-vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'vim-scripts/javacomplete'
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'marijnh/tern_for_vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
+Plugin 'dag/vim2hs'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'wting/rust.vim'
+Plugin 'cespare/vim-toml'
+Plugin 'stykr/racer.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,3 +70,4 @@ let g:ycm_error_symbol = '!!'
 let g:ycm_warning_symbol = '<>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_semantic_triggers = {'haskell' : ['.']}

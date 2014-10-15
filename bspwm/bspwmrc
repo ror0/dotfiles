@@ -5,8 +5,9 @@ bspc monitor --reset-desktops I II III IV V VI VII VIII IX X
 bspc rule --add Gimp follow=on floating=on
 bspc rule --add xcalc floating=on
 bspc rule --add mirage floating=on
+bspc rule --add qemu floating=on
 
-bspc config border_width		2
+bspc config border_width		4
 bspc config window_gap			40
 bspc config split_ratio			0.5
 bspc config top_padding			20

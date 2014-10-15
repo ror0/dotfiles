@@ -41,7 +41,6 @@ alias dir='dir --color=auto'
 alias grep='grep -P --color=auto'
 alias pacman='sudo pacman'
 alias svi='sudo vim'
-alias vi='vim'
 alias su='su -'
 alias pdf='zathura'
 alias img='mirage'
@@ -69,10 +68,10 @@ vcs_info_wrapper() {
 }
 
 if [[ "$USER" == "root" ]]; then
-        PROMPT="%{$fg[green]%} >  %{$reset_color%}"
-        RPROMPT="%{$fg[green]%}%~%{$reset_color%}"
+	PROMPT="%{$fg[green]%} >  %{$reset_color%}"
+	RPROMPT="%{$fg[green]%}%~%{$reset_color%}"
 else
-        PROMPT="%{$fg[blue]%} >  %{$reset_color%}"
+	PROMPT="%{$fg[blue]%} >  %{$reset_color%}"
 	RPROMPT="%{$fg[blue]%}%~$(vcs_info_wrapper)%{$reset_color%}"
 fi
 

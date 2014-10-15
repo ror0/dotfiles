@@ -145,7 +145,11 @@ set noswapfile
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Be smart when using tabs ;)
-set smarttab
+"set smarttab
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
 
 " Linebreak on 500 characters
 set lbr
