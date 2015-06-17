@@ -9,3 +9,4 @@ This repository contains my configuration files for the following:
 * git
 * zsh
 * X display server
+* Mintty
