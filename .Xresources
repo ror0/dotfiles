@@ -27,9 +27,15 @@
 *color7:		#dddddd
 *color15:		#ffffff
 
+Xft.dpi:				96
+Xft.antialias:			true
+Xft.hinting:			true
+Xft.hintstyle:			hintslight
+
 xterm*locale:			true
-xterm*faceName:			Inconsolata:antialias=true
-xterm*faceSize:			10
+!xterm*faceName:			Inconsolata
+xterm*faceName:			DejaVuSansMono
+xterm*faceSize:			9
 xterm*borderWidth:		0
 xterm*saveLines:		4096
 

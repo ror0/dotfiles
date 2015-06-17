@@ -11,8 +11,8 @@ silent so ~/.vim/plugins.vim
 set history=700
 
 " Enable filetype plugins
-filetype plugin on
-filetype indent on
+"filetype plugin on
+"filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -117,7 +117,7 @@ if has("gui_running")
 
     " Set the font for each operating system
     if has("gui_gtk2")
-        set guifont=Inconsolata\ 12
+        set guifont=DejaVuSansMono\ 9
     elseif has("gui_macvim")
         set guifont=Menlo\ Regular:h14
     elseif has("gui_win32")
@@ -146,7 +146,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Be smart when using tabs ;)
 "set smarttab
-set noexpandtab
+"set noexpandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0

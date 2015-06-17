@@ -1,3 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/rohan/files/rust/projects/rustico/arch/x86/drivers'
+let g:netrw_dirhist_2='/home/rohan/bin/bar/script'
+let g:netrw_dirhist_3='/home/rohan/files/python/flask/hello/hello'
+let g:netrw_dirhist_4='/home/rohan/files/cpp/pnog/src'
+let g:netrw_dirhist_5='/home/rohan/files/cpp/pnog'
+let g:netrw_dirhist_6='/home/rohan/.vim/bundle/Vundle.vim/autoload/vundle'
+let g:netrw_dirhist_7='/home/rohan/.weechat'
+let g:netrw_dirhist_8='/home/rohan/.weechat/script'

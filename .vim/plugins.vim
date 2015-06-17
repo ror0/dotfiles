@@ -28,25 +28,27 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
+
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'leafo/moonscript-vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'vim-scripts/javacomplete'
-"Plugin 'marijnh/tern_for_vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'scrooloose/nerdtree'
-Plugin 'dag/vim2hs'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'wting/rust.vim'
+"Plugin 'Shougo/neocomplete.vim'
+"Plugin 'davidhalter/jedi-vim'
+"Plugin 'Rip-Rip/clang_complete'
+Plugin 'phildawes/racer'
+"Plugin 'scrooloose/syntastic'
+Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
-Plugin 'stykr/racer.vim'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-"filetype plugin indent on    " required
+filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -70,4 +72,19 @@ let g:ycm_error_symbol = '!!'
 let g:ycm_warning_symbol = '<>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:ycm_semantic_triggers = {'rust' : ['::', '.']}
+
+" Syntastic
+let g:syntastic_error_symbol = "!!"
+let g:syntastic_style_error_symbol = "!!"
+let g:syntastic_warning_symbol = "<>"
+let g:syntastic_style_warning_symbol = "<>"
+
+" Racer
+let g:racer_cmd = "/usr/bin/racer"
+
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags

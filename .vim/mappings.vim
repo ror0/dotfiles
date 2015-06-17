@@ -7,9 +7,6 @@
 map j gj
 map k gk
 
-map <Space> /
-map <S-Space> ?
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><CR> :noh<cr>
 

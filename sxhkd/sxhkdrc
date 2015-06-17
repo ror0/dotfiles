@@ -88,19 +88,7 @@ alt + Return
     uxterm
 
 alt + space
-    dmenu_run -b -fn 'Inconsolata-9.5' -nb '#101010' -nf '#dddddd' -sf '#F7F9FF' -sb '#5B5955'
-
-alt + s
-    search
-
-alt + n
-    network
-
-alt + m
-    playlist
-
-alt + c
-    calculator
+    dmenu_run -b -fn 'DejaVuSansMono-9' -nb '#101010' -nf '#dddddd' -sf '#F7F9FF' -sb '#5B5955'
 
 alt + Escape
     slock
@@ -115,13 +103,13 @@ XF86AudioMute
     amixer -q set Master toggle
 
 XF86AudioPlay
-    mpc toggle
+	playerctl play-pause
 
 XF86AudioNext
-    mpc next
+	playerctl next
 
 XF86AudioPrev
-    mpc prev
+	playerctl previous
 
 # make sxhkd reload its configuration files:
 super + r
