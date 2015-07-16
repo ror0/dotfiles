@@ -8,22 +8,10 @@ silent so ~/.vim/plugins.vim
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
-set history=700
-
-" Enable filetype plugins
-"filetype plugin on
-"filetype indent on
+set history=1000
 
 " Set to auto read when a file is changed from the outside
 set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-
-" Fast saving
-nmap <leader>w :w!<cr>
 
 " Prevent vim from auto inserting comments on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -32,7 +20,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other interface settings
-set clipboard=unnamed
 set showcmd
 set showmode
 
@@ -53,12 +40,14 @@ set ruler
 " Highlight current line number
 hi clear CursorLine
 augroup CLClear
-autocmd! ColorScheme * hi clear CursorLine
+	autocmd! ColorScheme * hi clear CursorLine
 augroup END
+
 hi CursorLineNR cterm=bold
 augroup CLNRSet
-autocmd! ColorScheme * hi CursorLineNR cterm=bold
+	autocmd! ColorScheme * hi CursorLineNR cterm=bold
 augroup END
+
 set cursorline
 
 " A buffer becomes hidden when it is abandoned
@@ -75,7 +64,7 @@ set ignorecase
 set smartcase
 
 " Highlight search results
-"set hlsearch
+set hlsearch
 
 " Makes search act like search in modern browsers
 set incsearch
@@ -166,26 +155,29 @@ set wrap "Wrap lines
 " Always show the status line
 set laststatus=2
 
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+" Status line
+hi User1	ctermfg=3	ctermbg=8
+hi User2	ctermfg=1	ctermbg=8
+hi User3	ctermfg=5	ctermbg=8
+hi User4	ctermfg=2	ctermbg=8
+hi User5	ctermfg=11	ctermbg=8
+
+set statusline=
+set statusline +=%1*\ %n\ %*            "buffer number
+set statusline +=%5*%{&ff}%*            "file format
+set statusline +=%3*%y%*                "file type
+set statusline +=%4*\ %<%F%*            "full path
+set statusline +=%2*%m%*                "modified flag
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4v\ %*             "virtual column number
+set statusline +=%2*0x%04B\ %*          "character under cursor
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Completion stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set omnifunc=syntaxcomplete#Complete
 set completeopt=menuone,longest
-
-" Enable omnicomplete functions
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType python setlocal omnifunc=youcompleteme#OmniComplete
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c setlocal omnifunc=ccomplete#Complete
-"autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,19 +191,6 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source mappings

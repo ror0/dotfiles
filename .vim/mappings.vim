@@ -1,6 +1,16 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" With a map leader it's possible to do extra key combinations
+let mapleader = " "
+let g:mapleader = " "
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
@@ -51,6 +61,8 @@ endtry
 noremap <Right> :bn<CR>
 noremap <Left> :bp<CR>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Usage mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map the semicolon to the colon for easier command access
@@ -67,6 +79,14 @@ nnoremap <leader>wv <C-W>v
 nnoremap <leader>wh <C-W>s
 nnoremap <leader>wq <C-W>q
 
+" Resize windows
+nnoremap <leader>w+ <C-W>+
+nnoremap <leader>w- <C-W>-
+nnoremap <leader>w> <C-W>>
+nnoremap <leader>w< <C-W><
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
@@ -78,6 +98,8 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>sc z=
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up

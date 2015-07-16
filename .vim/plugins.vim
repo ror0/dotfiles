@@ -29,22 +29,40 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
+" Completion
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/context_filetype.vim'
+Plugin 'Shougo/vimproc.vim'
+" Python
+Plugin 'davidhalter/jedi-vim'
+" C/C++
+Plugin 'Rip-Rip/clang_complete'
+" Rust
+Plugin 'phildawes/racer'
+" Lua
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
-Plugin 'leafo/moonscript-vim'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'Valloric/YouCompleteMe'
-"Plugin 'Shougo/neocomplete.vim'
-"Plugin 'davidhalter/jedi-vim'
-"Plugin 'Rip-Rip/clang_complete'
-Plugin 'phildawes/racer'
-"Plugin 'scrooloose/syntastic'
+
+" Linting
+Plugin 'scrooloose/syntastic'
+
+" Filetypes
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'fatih/vim-go'
+
+" Utility
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'Shougo/vimshell.vim'
+
+"Colorscheme
+Plugin 'nanotech/jellybeans.vim'
+
+"Usage
+Plugin 'mattn/emmet-vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,6 +84,7 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lua autocomplete
 let g:lua_complete_omni = 1
+let g:lua_check_syntax = 0
 
 " YouCompleteMe
 let g:ycm_error_symbol = '!!'
@@ -80,11 +99,49 @@ let g:syntastic_style_error_symbol = "!!"
 let g:syntastic_warning_symbol = "<>"
 let g:syntastic_style_warning_symbol = "<>"
 
+" Go
+let g:go_fmt_fail_silently = 1
+
 " Racer
 let g:racer_cmd = "/usr/bin/racer"
+
+" Neocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#min_keyword_length = 2
+let g:neocomplete#enable_camel_case = 1
+let g:neocomplete#use_vimproc = 1
+if !exists('g:neocomplete#sources#omni#input_patterns')
+	let g:neocomplete#sources#omni#input_patterns = {}
+endif
+
+autocmd FileType lua NeoCompleteLock
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+	return neocomplete#close_popup() . "\<CR>"
+endfunction
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+if has("gui_running")
+	inoremap <C-Space> <C-X><C-O>
+else
+	inoremap <Nul> <C-X><C-O>
+endif
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
