@@ -21,10 +21,14 @@ map k gk
 map <silent> <leader><CR> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+
+" Work around because <C-h> is actually backspace...
+nnoremap <BS> <C-W>h
+"nnoremap <C-h> <C-W>h
+
+nnoremap <C-l> <C-W>l
 
 map <C-Down> <C-W>j
 map <C-Up> <C-W>k

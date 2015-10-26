@@ -33,21 +33,7 @@ Xft.hinting:			true
 Xft.hintstyle:			hintslight
 
 xterm*locale:			true
-!xterm*faceName:			Inconsolata
 xterm*faceName:			DejaVuSansMono
 xterm*faceSize:			9
 xterm*borderWidth:		0
 xterm*saveLines:		4096
-
-URxvt.scrollBar:		false
-URxvt.font:				xft:Inconsolata:size=10:antialias=true
-URxvt.perl-ext-common:	tabbedex
-
-URxvt.tabbed.autohide:	true
-
-URxvt.tabbed.tabbar-fg:				15
-URxvt.tabbed.tabbar-bg:				8
-URxvt.tabbed.tab-fg:				15
-URxvt.tabbed.tab-bg:				14
-URxvt.keysym.Control-Shift-Left: 	perl:tabbex:move_tab_left
-URxvt.keysym.Control-Shift-Right: 	perl:tabbex:move_tab_right
