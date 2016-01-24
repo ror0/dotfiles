@@ -22,6 +22,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Other interface settings
 set showcmd
 set showmode
+set mouse=a
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=3
@@ -64,7 +65,7 @@ set ignorecase
 set smartcase
 
 " Highlight search results
-set hlsearch
+set nohlsearch
 
 " Makes search act like search in modern browsers
 set incsearch

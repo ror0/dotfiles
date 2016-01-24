@@ -1,6 +1,6 @@
 " Vim syntax file
 " Language:	generic TODO file
-" Maintainer:	stykr <stykrrr@gmail.com>
+" Maintainer:	Rohan Rao <rao.rohan.a@gmail.com>
 " Last Change:	2013-08-15
 
 if exists("b:current_syntax")

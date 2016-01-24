@@ -35,7 +35,7 @@ Plugin 'Valloric/YouCompleteMe'
 "Plugin 'Shougo/context_filetype.vim'
 "Plugin 'Shougo/vimproc.vim'
 " Python
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 " C/C++
 "Plugin 'Rip-Rip/clang_complete'
 "Plugin 'osyo-manga/vim-marching'
@@ -43,6 +43,8 @@ Plugin 'davidhalter/jedi-vim'
 " Lua
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
+" Rust
+Plugin 'racer-rust/vim-racer'
 
 " Linting
 Plugin 'scrooloose/syntastic'
@@ -51,11 +53,16 @@ Plugin 'scrooloose/syntastic'
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
+Plugin 'vim-scripts/jam.vim'
+
 
 " Utility
 Plugin 'fholgado/minibufexpl.vim'
-Plugin 'Shougo/vimshell.vim'
+"Plugin 'Shougo/vimshell.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 "Colorscheme
 Plugin 'nanotech/jellybeans.vim'
@@ -106,12 +113,12 @@ let g:go_fmt_fail_silently = 1
 "let g:clang_complete_macros = 1
 
 " Vim Marching
-let g:marching_include_paths = filter(
-	\	split(glob('/usr/include/c++/*'), '\n') +
-	\	split(glob('/usr/include/*/c++/*'), '\n') +
-	\	split(glob('/usr/include/*/'), '\n'),
-	\	'isdirectory(v:val)')
-let g:marching_enable_neocomplete = 1
+"let g:marching_include_paths = filter(
+"	\	split(glob('/usr/include/c++/*'), '\n') +
+"	\	split(glob('/usr/include/*/c++/*'), '\n') +
+"	\	split(glob('/usr/include/*/'), '\n'),
+"	\	'isdirectory(v:val)')
+"let g:marching_enable_neocomplete = 1
 
 " Neocomplete
 "let g:neocomplete#enable_at_startup = 1
@@ -127,26 +134,42 @@ let g:marching_enable_neocomplete = 1
 " Syntastic
 let g:syntastic_cpp_compiler_options =  '-std=c++11 -stdlib=libc++ -Werror -pedantic -pedantic-errors -g -Wextra -Wall -pipe'
 
+" NERDTree
+let g:nerdtree_tabs_open_on_gui_startup = 0
+map <silent> <leader>t :NERDTreeTabsToggle<CR>
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 "function! s:my_cr_function()
-"	return neocomplete#close_popup() . "\<CR>"
+"	return neocomplete#close_popup() . '\<CR>'
 "endfunction
 
 " <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
 
 " <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-h> neocomplete#smart_close_popup().'\<C-h>'
+"inoremap <expr><BS> neocomplete#smart_close_popup().'\<C-h>'
 "inoremap <expr><C-y>  neocomplete#close_popup()
 "inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : '\<Space>'
 
-if has("gui_running")
+if has('gui_running')
 	inoremap <C-Space> <C-X><C-O>
 else
 	inoremap <Nul> <C-X><C-O>

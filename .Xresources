@@ -28,9 +28,11 @@
 *color15:		#ffffff
 
 Xft.dpi:				96
-Xft.antialias:			true
-Xft.hinting:			true
+Xft.antialias:			1
+Xft.hinting:			0
 Xft.hintstyle:			hintslight
+Xft.lcdfilter:			lcddefault
+Xft.rgba:				rgb
 
 xterm*locale:			true
 xterm*faceName:			DejaVuSansMono

@@ -3,8 +3,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " With a map leader it's possible to do extra key combinations
-let mapleader = " "
-let g:mapleader = " "
+"let mapleader = " "
+"let g:mapleader = " "
+map <Space> <Leader>
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -25,8 +26,11 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 
 " Work around because <C-h> is actually backspace...
-nnoremap <BS> <C-W>h
-"nnoremap <C-h> <C-W>h
+if has('gui_running')
+	nnoremap <C-h> <C-W>h
+else
+	nnoremap <BS> <C-W>h
+endif
 
 nnoremap <C-l> <C-W>l
 
@@ -38,14 +42,18 @@ map <C-Right> <C-W>l
 " Close the current buffer
 map <leader>bd :bd<cr>
 
+map <leader>ls :ls<cr>
+
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
+map <leader>tc :tabnew<cr>
 map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
+map <leader>td :tabclose<cr>
 map <leader>tm :tabmove
+map <leader>tn :tabnext<cr> 
+map <leader>tp :tabprevious<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory

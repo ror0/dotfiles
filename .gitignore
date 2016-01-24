@@ -17,6 +17,7 @@
 *.app
 
 bin/
+build/
 lib/
 
 .ycm_extra_conf.py*
@@ -27,3 +28,4 @@ types-*
 
 *.zip
 *.swp
+.gitignore
