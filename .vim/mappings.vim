@@ -87,8 +87,10 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Open split windows
-nnoremap <leader>wv <C-W>v
-nnoremap <leader>wh <C-W>s
+"nnoremap <leader>wv <C-W>v
+"nnoremap <leader>wh <C-W>s
+nnoremap <leader><Bar> <C-W>v
+nnoremap <leader>- <C-W>s
 nnoremap <leader>wq <C-W>q
 
 " Resize windows

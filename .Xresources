@@ -1,31 +1,49 @@
 ! vim: set filetype=xdefaults :
-*foreground:	#ffffff
-*background:	#151515
+
+#define blk		101010
+#define bblk	151515
+#define red		E84F4F
+#define bred	D23D3D
+#define grn		B8D68C
+#define bgrn	A0CF5D
+#define ylw		E1AA5D
+#define bylw	F39D21
+#define blu		7DC1CF
+#define bblu	4E9FB1
+#define mag		9B64FB
+#define bmag	8542FF
+#define cyn		6D878D
+#define bcyn	42717B
+#define wht		dddddd
+#define bwht	ffffff
+
+*foreground:	#bwht
+*background:	#bblk
 
 !black
-*color0:		#101010
-*color8:		#151515
+*color0:		#blk
+*color8:		#bblk
 !red
-*color1:		#E84F4F
-*color9:		#D23D3D
+*color1:		#red
+*color9:		#bred
 !green
-*color2:		#B8D68C
-*color10:		#A0CF5D
+*color2:		#grn
+*color10:		#bgrn
 !yellow
-*color3:		#E1AA5D
-*color11:		#F39D21
+*color3:		#ylw
+*color11:		#bylw
 !blue
-*color4:		#7DC1CF
-*color12:		#4E9FB1
+*color4:		#blu
+*color12:		#bblu
 !magenta
-*color5:		#9B64FB
-*color13:		#8542FF
+*color5:		#mag
+*color13:		#bmag
 !cyan
-*color6:		#6D878D
-*color14:		#42717B
+*color6:		#cyn
+*color14:		#bcyn
 !white
-*color7:		#dddddd
-*color15:		#ffffff
+*color7:		#wht
+*color15:		#bwht
 
 Xft.dpi:				96
 Xft.antialias:			1
@@ -36,6 +54,27 @@ Xft.rgba:				rgb
 
 xterm*locale:			true
 xterm*faceName:			DejaVuSansMono
-xterm*faceSize:			9
+xterm*faceSize:			10
 xterm*borderWidth:		0
 xterm*saveLines:		4096
+
+URxvt.scrollBar:		false
+URxvt.font:				xft:DejaVuSansMono:size=10
+
+rofi.bw:				0
+rofi.font:				Dejavu Sans Mono 18
+rofi.eh:				2
+rofi.lines:				5
+rofi.terminal:			uxterm
+rofi.separator-style:	solid
+rofi.hide-scrollbar:	true
+rofi.opacity:			90
+rofi.width:				100
+rofi.padding:			480
+
+rofi.color-enabled:		true
+rofi.color-window:		#bblk, #bblk, #bblk
+rofi.color-normal:		#bblk, #bwht, #bblk, #bblk, #cyn
+rofi.color-urgent:		#bblk, #red, #bblk, #bblk, #cyn
+rofi.color-active:		#bblk, #blu, #bblk, #bblk, #blu
+

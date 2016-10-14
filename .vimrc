@@ -16,6 +16,11 @@ set autoread
 " Prevent vim from auto inserting comments on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Removes the command timeout
+"set notimeout
+"set nottimeout
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -24,35 +29,19 @@ set showcmd
 set showmode
 set mouse=a
 
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=3
+" Set 3 lines to the cursor - when moving vertically using j/k
+set scrolloff=3
 
 " Turn on the WiLd menu
 set wildmenu
-set wildmode=longest,list:longest
-
-" Ignore compiled files
-"set wildignore=*.o,*~,*.pyc
+set wildmode=longest:full,list:longest
 
 "Always show current position
 set number
 set ruler
 
-" Highlight current line number
-hi clear CursorLine
-augroup CLClear
-	autocmd! ColorScheme * hi clear CursorLine
-augroup END
-
-hi CursorLineNR cterm=bold
-augroup CLNRSet
-	autocmd! ColorScheme * hi CursorLineNR cterm=bold
-augroup END
-
-set cursorline
-
 " A buffer becomes hidden when it is abandoned
-set hid
+"set hidden
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -93,6 +82,19 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
+
+" Highlight current line number
+hi clear CursorLine
+augroup CLClear
+	autocmd! ColorScheme * hi clear CursorLine
+augroup END
+
+hi CursorLineNR ctermfg=yellow
+augroup CLNRSet
+	autocmd! ColorScheme * hi CursorLineNR ctermfg=yellow
+augroup END
+
+set cursorline
 
 colorscheme jellybeans
 
@@ -157,22 +159,20 @@ set wrap "Wrap lines
 set laststatus=2
 
 " Status line
-hi User1	ctermfg=3	ctermbg=8
-hi User2	ctermfg=1	ctermbg=8
-hi User3	ctermfg=5	ctermbg=8
-hi User4	ctermfg=2	ctermbg=8
-hi User5	ctermfg=11	ctermbg=8
+hi User1	ctermfg=3	ctermbg=235
+hi User2	ctermfg=1	ctermbg=235
+hi User3	ctermfg=5	ctermbg=235
+hi User4	ctermfg=2	ctermbg=235
+hi User5	ctermfg=11	ctermbg=235
 
 set statusline=
-set statusline +=%1*\ %n\ %*            "buffer number
-set statusline +=%5*%{&ff}%*            "file format
-set statusline +=%3*%y%*                "file type
-set statusline +=%4*\ %<%F%*            "full path
-set statusline +=%2*%m%*                "modified flag
-set statusline +=%1*%=%5l%*             "current line
-set statusline +=%2*/%L%*               "total lines
-set statusline +=%1*%4v\ %*             "virtual column number
-set statusline +=%2*0x%04B\ %*          "character under cursor
+set statusline +=%1*\ [%n]\ %*		"buffer number
+set statusline +=%4*\ %t\ %*		"file name
+set statusline +=%3*\ %y%*			"file type
+set statusline +=%2*%m%*			"modified flag
+set statusline +=%1*%=%l\ x\ %*		"current line
+set statusline +=%1*%v\ %*			"virtual column number
+set statusline +=%2*\ [%L]%*		"total lines
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

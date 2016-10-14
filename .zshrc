@@ -27,10 +27,12 @@ setopt HIST_NO_STORE
 setopt prompt_subst
 
 export EDITOR="vim"
-export BROWSER="firefox"
+export BROWSER="chromium"
 export LD_LIBRARY_PATH="/usr/local/lib"
 export TERM="xterm-256color"
-[ -n "$TMUX" ] && export TERM="screen-256color"
+#[ -n "$TMUX" ] && export TERM="screen-256color"
+#[ -n "$TMUX" ] && export TERM="xterm-256color"
+#[ -n "$TMUX" ] && export TERM="xterm"
 # Done
 
 # Aliases
@@ -48,7 +50,7 @@ alias systemctl='sudo systemctl'
 alias netctl='sudo netctl'
 alias netctl-auto='sudo netctl-auto'
 alias reset='reset -Q'
-alias tmux='tmux -2'
+alias tmux="tmux -2"
 alias ":q"='echo "FOOL! You are not in VIM!"'
 alias "q"='echo "FOOL! You are not in VIM!"'
 #Done
@@ -95,11 +97,3 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 #zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
 #zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
 zstyle ':completion:*' menu select
-
-export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:${HOME}/perl5";
-export PERL_MB_OPT="--install_base ${HOME}/perl5";
-export PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5";
-export PERL5LIB="${HOME}/perl5/lib/perl5:$PERL5LIB";
-export PATH="${HOME}/perl5/bin:$PATH";
-export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH";
-export PATH="/usr/include/python3.5m:$PATH";

@@ -44,10 +44,10 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
 " Rust
-Plugin 'racer-rust/vim-racer'
+"Plugin 'racer-rust/vim-racer'
 
 " Linting
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 
 " Filetypes
 Plugin 'rust-lang/rust.vim'
@@ -66,6 +66,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 "Colorscheme
 Plugin 'nanotech/jellybeans.vim'
+"Plugin 'chriskempson/base16-vim'
 
 "Usage
 Plugin 'mattn/emmet-vim'
@@ -101,10 +102,10 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_semantic_triggers = {'rust' : ['::', '.']}
 
 " Syntastic
-let g:syntastic_error_symbol = "!!"
-let g:syntastic_style_error_symbol = "!!"
-let g:syntastic_warning_symbol = "<>"
-let g:syntastic_style_warning_symbol = "<>"
+"let g:syntastic_error_symbol = "!"
+"let g:syntastic_style_error_symbol = "!"
+"let g:syntastic_warning_symbol = "<>"
+"let g:syntastic_style_warning_symbol = "<>"
 
 " Go
 let g:go_fmt_fail_silently = 1
@@ -132,7 +133,7 @@ let g:go_fmt_fail_silently = 1
 "autocmd FileType lua NeoCompleteLock
 
 " Syntastic
-let g:syntastic_cpp_compiler_options =  '-std=c++11 -stdlib=libc++ -Werror -pedantic -pedantic-errors -g -Wextra -Wall -pipe'
+"let g:syntastic_cpp_compiler_options =  '-std=c++11 -stdlib=libc++ -Werror -pedantic -pedantic-errors -g -Wextra -Wall -pipe'
 
 " NERDTree
 let g:nerdtree_tabs_open_on_gui_startup = 0

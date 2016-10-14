@@ -10,33 +10,41 @@
 "         "A colorful, dark color scheme for Vim."
 "
 " File:         jellybeans.vim
-" Maintainer:   NanoTech <http://nanotech.nanotechcorp.net/>
-" Version:      1.5
+" URL:          github.com/nanotech/jellybeans.vim
+" Scripts URL:  vim.org/scripts/script.php?script_id=2555
+" Maintainer:   NanoTech (nanotech.nanotechcorp.net)
+" Version:      1.6~git
 " Last Change:  January 15th, 2012
-" Contributors: Daniel Herbert <http://pocket-ninja.com/>,
-"               Henry So, Jr. <henryso@panix.com>,
-"               David Liang <bmdavll at gmail dot com>,
-"               Rich Healey (richoH),
+" License:      MIT
+" Contributors: Daniel Herbert (pocketninja)
+"               Henry So, Jr. <henryso@panix.com>
+"               David Liang <bmdavll at gmail dot com>
+"               Rich Healey (richo)
 "               Andrew Wong (w0ng)
 "
 " Copyright (c) 2009-2012 NanoTech
 "
-" Permission is hereby granted, free of charge, to any person obtaining a copy
-" of this software and associated documentation files (the "Software"), to deal
-" in the Software without restriction, including without limitation the rights
-" to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-" copies of the Software, and to permit persons to whom the Software is
-" furnished to do so, subject to the following conditions:
+" Permission is hereby granted, free of charge, to any per‐
+" son obtaining a copy of this software and associated doc‐
+" umentation  files  (the “Software”), to deal in the Soft‐
+" ware without restriction,  including  without  limitation
+" the rights to use, copy, modify, merge, publish, distrib‐
+" ute, sublicense, and/or sell copies of the Software,  and
+" to permit persons to whom the Software is furnished to do
+" so, subject to the following conditions:
 "
-" The above copyright notice and this permission notice shall be included in
-" all copies or substantial portions of the Software.
+" The above copyright notice  and  this  permission  notice
+" shall  be  included in all copies or substantial portions
+" of the Software.
 "
-" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-" IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-" FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-" AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-" LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-" OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+" THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY
+" KIND,  EXPRESS  OR  IMPLIED, INCLUDING BUT NOT LIMITED TO
+" THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICU‐
+" LAR  PURPOSE  AND  NONINFRINGEMENT. IN NO EVENT SHALL THE
+" AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE  FOR  ANY  CLAIM,
+" DAMAGES  OR OTHER LIABILITY, WHETHER IN AN ACTION OF CON‐
+" TRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CON‐
+" NECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 " THE SOFTWARE.
 
 set background=dark
@@ -54,6 +62,56 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 else
   let s:low_color = 1
 endif
+
+" Configuration Variables:
+" - g:jellybeans_overrides
+" - g:jellybeans_use_lowcolor_black
+" - g:jellybeans_use_term_background_color
+" - g:jellybeans_use_term_italics
+
+let s:background_color = "151515"
+
+" Backwards compatibility
+if exists("g:jellybeans_background_color") || exists("g:jellybeans_background_color_256")
+  if !exists("g:jellybeans_overrides")
+    let g:jellybeans_overrides = {}
+  endif
+  if !has_key(g:jellybeans_overrides, "background")
+    let g:jellybeans_overrides["background"] = {}
+  endif
+
+  if exists("g:jellybeans_background_color")
+    let g:jellybeans_overrides["background"]["guibg"] = g:jellybeans_background_color
+  endif
+
+  if exists("g:jellybeans_background_color_256")
+    let g:jellybeans_overrides["background"]["256ctermbg"] = g:jellybeans_background_color_256
+  endif
+endif
+
+" Ensure that g:jellybeans_use_term_background_color = 0 works with overrides
+if exists("g:jellybeans_overrides")
+  \ && has_key(g:jellybeans_overrides, "background")
+  \ && has_key(g:jellybeans_overrides["background"], "guibg")
+  let s:background_color = g:jellybeans_overrides["background"]["guibg"]
+endif
+
+if !exists("g:jellybeans_use_lowcolor_black") || g:jellybeans_use_lowcolor_black
+  let s:termBlack = "Black"
+else
+  let s:termBlack = "Grey"
+endif
+
+if !exists("g:jellybeans_use_term_background_color")
+  " OS X's Terminal.app and iTerm apply transparency to all
+  " backgrounds. Other terminals tend to only apply transparency
+  " to the default unhighlighted background.
+  "
+  " has("mac") only detects MacVim, not Apple's /usr/bin/vim.
+  " We could check system("uname"), but then we're calling
+  " external programs from a colorscheme.
+  let g:jellybeans_use_term_background_color = has("mac")
+end
 
 " Color approximation functions by Henry So, Jr. and David Liang {{{
 " Added to jellybeans.vim by Daniel Herbert
@@ -210,6 +268,11 @@ endfun
 
 " returns the palette index to approximate the given R/G/B color levels
 fun! s:color(r, g, b)
+  " map greys directly (see xterm's 256colres.pl)
+  if &t_Co == 256 && a:r == a:g && a:g == a:b && a:r > 3 && a:r < 243
+    return float2nr(round(a:r - 8) / 10.0) + 232
+  endif
+
   " get the closest grey
   let l:gx = s:grey_number(a:r)
   let l:gy = s:grey_number(a:g)
@@ -268,40 +331,47 @@ fun! s:X(group, fg, bg, attr, lcfg, lcbg)
     let l:fge = empty(a:fg)
     let l:bge = empty(a:bg)
 
+    if !g:jellybeans_use_term_background_color && a:bg == s:background_color
+      let l:ctermbg = 'NONE'
+    else
+      let l:ctermbg = s:rgb(a:bg)
+    endif
+
     if !l:fge && !l:bge
-      exec "hi ".a:group." guifg=#".a:fg." guibg=#".a:bg." ctermfg=".s:rgb(a:fg)." ctermbg=".s:rgb(a:bg)
+      exec "hi ".a:group." guifg=#".a:fg." guibg=#".a:bg." ctermfg=".s:rgb(a:fg)." ctermbg=".l:ctermbg
     elseif !l:fge && l:bge
       exec "hi ".a:group." guifg=#".a:fg." guibg=NONE ctermfg=".s:rgb(a:fg)." ctermbg=NONE"
     elseif l:fge && !l:bge
-      exec "hi ".a:group." guifg=NONE guibg=#".a:bg." ctermfg=NONE ctermbg=".s:rgb(a:bg)
+      exec "hi ".a:group." guifg=NONE guibg=#".a:bg." ctermfg=NONE ctermbg=".l:ctermbg
     endif
   endif
 
-  if a:attr == ""
-    exec "hi ".a:group." gui=none cterm=none"
+  if empty(a:attr)
+    let l:attr = "none"
   else
-    let noitalic = join(filter(split(a:attr, ","), "v:val !=? 'italic'"), ",")
-    if empty(noitalic)
-      let noitalic = "none"
-    endif
-    exec "hi ".a:group." gui=".a:attr." cterm=".noitalic
+    let l:attr = a:attr
   endif
+
+  if exists("g:jellybeans_use_term_italics") && g:jellybeans_use_term_italics
+    let l:cterm_attr = l:attr
+  else
+    let l:cterm_attr = join(filter(split(l:attr, ","), "v:val !=? 'italic'"), ",")
+    if empty(l:cterm_attr)
+      let l:cterm_attr = "none"
+    endif
+  endif
+
+  exec "hi ".a:group." gui=".l:attr." cterm=".l:cterm_attr
 endfun
 " }}}
 
-call s:X("Normal","e8e8d3","151515","","White","")
+call s:X("Normal","e8e8d3",s:background_color,"","White","")
 set background=dark
-
-if !exists("g:jellybeans_use_lowcolor_black") || g:jellybeans_use_lowcolor_black
-    let s:termBlack = "Black"
-else
-    let s:termBlack = "Grey"
-endif
 
 if version >= 700
   call s:X("CursorLine","","1c1c1c","","",s:termBlack)
   call s:X("CursorColumn","","1c1c1c","","",s:termBlack)
-  call s:X("MatchParen","ffffff","80a090","bold","","DarkCyan")
+  call s:X("MatchParen","ffffff","556779","bold","","DarkCyan")
 
   call s:X("TabLine","000000","b0b8c0","italic","",s:termBlack)
   call s:X("TabLineFill","9098a0","","","",s:termBlack)
@@ -313,11 +383,12 @@ if version >= 700
 endif
 
 call s:X("Visual","","404040","","",s:termBlack)
-call s:X("Cursor","","b0d0f0","","","")
+call s:X("Cursor",s:background_color,"b0d0f0","","","")
 
-call s:X("LineNr","605958","151515","none",s:termBlack,"")
+call s:X("LineNr","605958",s:background_color,"none",s:termBlack,"")
+call s:X("CursorLineNr","ccc5c4","","none","White","")
 call s:X("Comment","888888","","italic","Grey","")
-call s:X("Todo","808080","","bold","White",s:termBlack)
+call s:X("Todo","c7c7c7","","bold","White",s:termBlack)
 
 call s:X("StatusLine","000000","dddddd","italic","","White")
 call s:X("StatusLineNC","ffffff","403c41","italic","White","Black")
@@ -342,12 +413,12 @@ call s:X("Identifier","c6b6ee","","","LightCyan","")
 call s:X("Structure","8fbfdc","","","LightCyan","")
 call s:X("Function","8fbfdc","","","Yellow","")
 call s:X("Statement","8197bf","","","DarkBlue","")
-call s:X("PreProc","6D878D","","","LightBlue","")
+call s:X("PreProc","6d878d","","","LightBlue","")
 
 hi! link Operator Normal
 
 call s:X("Type","ffb964","","","Yellow","")
-call s:X("NonText","606060","151515","",s:termBlack,"")
+call s:X("NonText","606060",s:background_color,"",s:termBlack,"")
 
 call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 
@@ -389,6 +460,13 @@ hi! link phpQuoteDouble StringDelimiter
 hi! link phpBoolean Constant
 hi! link phpNull Constant
 hi! link phpArrayPair Operator
+hi! link phpOperator Normal
+hi! link phpRelation Normal
+hi! link phpVarSelector Identifier
+
+" Python
+
+hi! link pythonOperator Statement
 
 " Ruby
 
@@ -414,10 +492,26 @@ call s:X("rubyRegexpSpecial","a40073","","","Magenta","")
 
 call s:X("rubyPredefinedIdentifier","de5577","","","Red","")
 
+" Erlang
+
+hi! link erlangAtom rubySymbol
+hi! link erlangBIF rubyPredefinedIdentifier
+hi! link erlangFunction rubyPredefinedIdentifier
+hi! link erlangDirective Statement
+hi! link erlangNode Identifier
+
+" Elixir
+
+hi! link elixirAtom rubySymbol
+
+
 " JavaScript
 
 hi! link javaScriptValue Constant
 hi! link javaScriptRegexpString rubyRegexp
+hi! link javaScriptTemplateVar StringDelim
+hi! link javaScriptTemplateDelim Identifier
+hi! link javaScriptTemplateString String
 
 " CoffeeScript
 
@@ -429,6 +523,7 @@ hi! link luaOperator Conditional
 
 " C
 
+hi! link cFormat Identifier
 hi! link cOperator Constant
 
 " Objective-C/Cocoa
@@ -444,6 +539,28 @@ hi! link objcMethodName Identifier
 hi! link objcMethodArg Normal
 hi! link objcMessageName Identifier
 
+" Vimscript
+
+hi! link vimOper Normal
+
+" HTML
+
+hi! link htmlTag Statement
+hi! link htmlEndTag htmlTag
+hi! link htmlTagName htmlTag
+
+" XML
+
+hi! link xmlTag Statement
+hi! link xmlEndTag xmlTag
+hi! link xmlTagName xmlTag
+hi! link xmlEqual xmlTag
+hi! link xmlEntity Special
+hi! link xmlEntityPunct xmlEntity
+hi! link xmlDocTypeDecl PreProc
+hi! link xmlDocTypeKeyword PreProc
+hi! link xmlProcessingDelim xmlAttrib
+
 " Debugger.vim
 
 call s:X("DbgCurrent","DEEBFE","345FA8","","White","DarkBlue")
@@ -454,8 +571,8 @@ call s:X("DbgBreakPt","","4F0037","","","DarkMagenta")
 if !exists("g:indent_guides_auto_colors")
   let g:indent_guides_auto_colors = 0
 endif
-call s:X("IndentGuidesOdd","","202020","","","")
-call s:X("IndentGuidesEven","","1c1c1c","","","")
+call s:X("IndentGuidesOdd","","232323","","","")
+call s:X("IndentGuidesEven","","1b1b1b","","","")
 
 " Plugins, etc.
 
@@ -466,16 +583,64 @@ call s:X("PreciseJumpTarget","B9ED67","405026","","White","Green")
 if !s:low_color
   hi StatusLineNC ctermbg=235
   hi Folded ctermbg=236
-  hi FoldColumn ctermbg=234
-  hi SignColumn ctermbg=236
-  hi CursorColumn ctermbg=234
-  hi CursorLine ctermbg=234
-  hi SpecialKey ctermbg=234
-  hi NonText ctermbg=233
-  hi LineNr ctermbg=233
   hi DiffText ctermfg=81
-  hi Normal ctermbg=233
   hi DbgBreakPt ctermbg=53
+  hi IndentGuidesOdd ctermbg=235
+  hi IndentGuidesEven ctermbg=234
+endif
+
+if exists("g:jellybeans_overrides")
+  fun! s:current_attr(group)
+    let l:synid = synIDtrans(hlID(a:group))
+    let l:attrs = []
+    for l:attr in ["bold", "italic", "reverse", "standout", "underline", "undercurl"]
+      if synIDattr(l:synid, l:attr, "gui") == 1
+        call add(l:attrs, l:attr)
+      endif
+    endfor
+    return join(l:attrs, ",")
+  endfun
+  fun! s:current_color(group, what, mode)
+    let l:color = synIDattr(synIDtrans(hlID(a:group)), a:what, a:mode)
+    if l:color == -1
+      return ""
+    else
+      return substitute(l:color, "^#", "", "")
+    endif
+  endfun
+  fun! s:load_color_def(group, def)
+    call s:X(a:group, get(a:def, "guifg", s:current_color(a:group, "fg", "gui")),
+    \                 get(a:def, "guibg", s:current_color(a:group, "bg", "gui")),
+    \                 get(a:def, "attr", s:current_attr(a:group)),
+    \                 get(a:def, "ctermfg", s:current_color(a:group, "fg", "cterm")),
+    \                 get(a:def, "ctermbg", s:current_color(a:group, "bg", "cterm")))
+    if !s:low_color
+      for l:prop in ["ctermfg", "ctermbg"]
+        let l:override_key = "256".l:prop
+        if has_key(a:def, l:override_key)
+          exec "hi ".a:group." ".l:prop."=".a:def[l:override_key]
+        endif
+      endfor
+    endif
+  endfun
+  fun! s:load_colors(defs)
+    for [l:group, l:def] in items(a:defs)
+      if l:group == "background"
+        call s:load_color_def("LineNr", l:def)
+        call s:load_color_def("NonText", l:def)
+        call s:load_color_def("Normal", l:def)
+      else
+        call s:load_color_def(l:group, l:def)
+      endif
+      unlet l:group
+      unlet l:def
+    endfor
+  endfun
+  call s:load_colors(g:jellybeans_overrides)
+  delf s:load_colors
+  delf s:load_color_def
+  delf s:current_color
+  delf s:current_attr
 endif
 
 " delete functions {{{
