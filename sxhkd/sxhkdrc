@@ -4,19 +4,22 @@
 
 # terminal emulator
 alt + Return
-	uxterm
+	termite
 
 # program launcher
 alt + space
+	rofi -show drun
+
+# program launcher
+alt + ctrl + space
 	rofi -show run
+
+alt + w
+	rofi -show window
 
 # lock screen
 alt + Escape
-	slock
-
-# ssh select
-alt + s
-	rofi -show ssh
+	lock.sh
 
 # make sxhkd reload its configuration files:
 super + r
@@ -158,8 +161,8 @@ XF86AudioNext
 
 # lower brightness
 XF86MonBrightnessDown
-	xbacklight -dec 10
+	light -U 10%
 
 # raise brightness
 XF86MonBrightnessUp
-	xbacklight -inc 10
+	light -A 10%

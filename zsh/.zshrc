@@ -15,24 +15,13 @@ fi
 # Options
 setopt multios
 setopt correct
-#setopt GLOB_COMPLETE
 setopt no_beep
-#setopt NO_CASE_GLOB
-#setopt EXTENDED_GLOB
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
 setopt prompt_subst
-
-export EDITOR="vim"
-export BROWSER="chromium"
-export LD_LIBRARY_PATH="/usr/local/lib"
-export TERM="xterm-256color"
-#[ -n "$TMUX" ] && export TERM="screen-256color"
-#[ -n "$TMUX" ] && export TERM="xterm-256color"
-#[ -n "$TMUX" ] && export TERM="xterm"
 # Done
 
 # Aliases
@@ -80,7 +69,6 @@ else
 	PROMPT+="%{$fg[blue]%} >  %{$reset_color%}"
 	RPROMPT="%{$fg[blue]%}%~%{$reset_color%}"
 fi
-
 # Done
 
 # History
@@ -93,7 +81,4 @@ SAVEHIST=1000
 bindkey -v
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-#zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$VAR)(?)*=00=$color[green]=$color[bg-green]" )'
-#zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
-#zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
 zstyle ':completion:*' menu select

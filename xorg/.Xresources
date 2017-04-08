@@ -53,28 +53,9 @@ Xft.lcdfilter:			lcddefault
 Xft.rgba:				rgb
 
 xterm*locale:			true
-xterm*faceName:			DejaVuSansMono
-xterm*faceSize:			10
+xterm*faceName:			DejaVu Sans Mono:size=10:antialias=true
 xterm*borderWidth:		0
 xterm*saveLines:		4096
 
 URxvt.scrollBar:		false
 URxvt.font:				xft:DejaVuSansMono:size=10
-
-rofi.bw:				0
-rofi.font:				Dejavu Sans Mono 18
-rofi.eh:				2
-rofi.lines:				5
-rofi.terminal:			uxterm
-rofi.separator-style:	solid
-rofi.hide-scrollbar:	true
-rofi.opacity:			90
-rofi.width:				100
-rofi.padding:			480
-
-rofi.color-enabled:		true
-rofi.color-window:		#bblk, #bblk, #bblk
-rofi.color-normal:		#bblk, #bwht, #bblk, #bblk, #cyn
-rofi.color-urgent:		#bblk, #red, #bblk, #bblk, #cyn
-rofi.color-active:		#bblk, #blu, #bblk, #bblk, #blu
-

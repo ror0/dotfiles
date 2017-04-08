@@ -1,0 +1,57 @@
+[options]
+allow_bold = true
+audible_bell = false
+browser = chromium
+clickable_url = true
+cursor_shape = block
+dynamic_title = true
+filter_unmatched_urls = true
+
+font = Siji 11.5
+font = Font Awesome 11.5
+#font = Dejavu Sans Mono 11
+font = Source Code Pro 11.5
+
+fullscreen = true
+mouse_autohide = false
+
+
+[colors]
+
+# special
+foreground      = #dddddd
+foreground_bold = #ffffff
+cursor          = #dddddd
+background      = #151515
+
+# black
+color0  = #101010
+color8  = #151515
+
+# red
+color1  = #e84f4f
+color9  = #d23d3d
+
+# green
+color2  = #b8d68c
+color10 = #a0cf5d
+
+# yellow
+color3  = #e1aa5d
+color11 = #f39d21
+
+# blue
+color4  = #7dc1cf
+color12 = #4e9fb1
+
+# magenta
+color5  = #9b64fb
+color13 = #8542ff
+
+# cyan
+color6  = #6d878d
+color14 = #42717b
+
+# white
+color7  = #dddddd
+color15 = #ffffff

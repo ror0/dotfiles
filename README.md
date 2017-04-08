@@ -3,10 +3,13 @@
 This repository contains my configuration files for the following:
 
 * Vim
+* Neovim
+* X.org server
+* Xterm/Urxvt
+* Zsh
+* Git
 * bspwm
 * sxhkd
-* Xterm/Urxvt
-* git
-* zsh
-* X display server
-* Mintty
+* Polybar
+* Rofi
+* Termite
