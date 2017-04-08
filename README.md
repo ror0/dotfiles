@@ -13,3 +13,4 @@ This repository contains my configuration files for the following:
 * Polybar
 * Rofi
 * Termite
+* scripts

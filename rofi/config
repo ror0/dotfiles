@@ -1,17 +1,15 @@
 rofi.terminal:			termite
-rofi.font:				Dejavu Sans Mono 18
-rofi.opacity:			90
-rofi.width:				1920
-rofi.padding:			400
-rofi.bw:				0
+rofi.font:				Source Code Pro 18
+rofi.location:			0
+#rofi.padding:			100
+rofi.bw:				2
 rofi.separator-style:	solid
-rofi.eh:				2
-rofi.hide-scrollbar:	true
+rofi.eh:				1.5
+#rofi.hide-scrollbar:	true
 rofi.lines:				5
-rofi.location:			2
+#rofi.fullscreen:		true
 
-rofi.color-enabled:		true
-rofi.color-window:		#151515, #151515, #151515
-rofi.color-normal:		#151515, #ffffff, #151515, #151515, #6d878d
-rofi.color-urgent:		#151515, #e84f4f, #151515, #151515, #6d878d
-rofi.color-active:		#151515, #7dc1cf, #151515, #151515, #7dc1cf
+rofi.color-window:		#d8151515, #dddddd, #7dc1cf
+rofi.color-normal:		#d8151515, #ffffff, #d8151515, #252525, #6d878d
+#rofi.color-urgent:		#d8151515, #e84f4f, #d8151515, #252525, #6d878d
+rofi.color-active:		#d8151515, #7dc1cf, #d8151515, #252525, #7dc1cf
