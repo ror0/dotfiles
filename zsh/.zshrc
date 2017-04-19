@@ -5,7 +5,22 @@ colors
 compinit
 promptinit
 autoload zmv
-# Done
+
+# make zsh/terminfo work for terms with application and cursor modes
+case "$TERM" in
+	vte*|xterm*)
+		zle-line-init() { zle -N zle-keymap-select; echoti smkx }
+		zle-line-finish() { echoti rmkx }
+		zle -N zle-line-init
+		zle -N zle-line-finish
+		;;
+esac
+
+# backspace
+if [[ -n $terminfo[kbs] ]]; then
+	bindkey          "$terminfo[kbs]"   backward-delete-char
+	bindkey -M vicmd "$terminfo[kbs]"   backward-char
+fi
 
 # Dircolors
 if [[ -a "$HOME/.dircolors" ]]; then
@@ -22,7 +37,6 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
 setopt prompt_subst
-# Done
 
 # Aliases
 alias ls='ls --group-directories-first --color=auto -X'
@@ -42,7 +56,6 @@ alias reset='reset -Q'
 alias tmux="tmux -2"
 alias ":q"='echo "FOOL! You are not in VIM!"'
 alias "q"='echo "FOOL! You are not in VIM!"'
-#Done
 
 # Prompt
 zstyle ':vcs_info:*' stagedstr '*'
@@ -53,9 +66,9 @@ zstyle ':vcs_info:*' formats '%F{5}(% %F{4}%r% %F{5})% %F{3}-% %F{5}[% %F{2}%b% 
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 zstyle ':vcs_info:*' enable git
 +vi-git-untracked() {
-	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
-		hook_com[unstaged]+='%F{1}*%f'
-	fi
+if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
+	hook_com[unstaged]+='%F{1}*%f'
+fi
 }
 
 precmd () { vcs_info }
@@ -69,13 +82,11 @@ else
 	PROMPT+="%{$fg[blue]%} >  %{$reset_color%}"
 	RPROMPT="%{$fg[blue]%}%~%{$reset_color%}"
 fi
-# Done
 
 # History
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-# Done
 
 # Other 
 bindkey -v

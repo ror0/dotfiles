@@ -9,7 +9,7 @@ Plug 'ap/vim-buftabline'
 Plug 'jiangmiao/auto-pairs'
 
 " Completion
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 
 " Languages
 Plug 'rust-lang/rust.vim'
@@ -23,7 +23,7 @@ call plug#end()
 
 " ======== Plugin settings ======== 
 " YouCompleteMe
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 " Jellybeans
 let g:jellybeans_overrides = {

@@ -5,6 +5,9 @@ export EDITOR="vim"
 export BROWSER="chromium"
 if [[ "$USER" != "root" ]]; then
 	export BACKUP="$HOME/backup/dotfiles"
-	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+	if [ -f "/bin/rustc" ]; then
+		export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+	}
 	export GOPATH="$HOME/files/gospace"
+	export PATH="${PATH}:${GOPATH}/bin"
 fi
