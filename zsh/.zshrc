@@ -6,25 +6,9 @@ compinit
 promptinit
 autoload zmv
 
-# make zsh/terminfo work for terms with application and cursor modes
-case "$TERM" in
-	vte*|xterm*)
-		zle-line-init() { zle -N zle-keymap-select; echoti smkx }
-		zle-line-finish() { echoti rmkx }
-		zle -N zle-line-init
-		zle -N zle-line-finish
-		;;
-esac
-
-# backspace
-if [[ -n $terminfo[kbs] ]]; then
-	bindkey          "$terminfo[kbs]"   backward-delete-char
-	bindkey -M vicmd "$terminfo[kbs]"   backward-char
-fi
-
 # Dircolors
 if [[ -a "$HOME/.dircolors" ]]; then
-	eval "$(dircolors -b ~/.dircolors)"
+	eval "$(dircolors $HOME/.dircolors)"
 fi
 
 # Options

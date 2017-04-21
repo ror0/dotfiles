@@ -1,4 +1,4 @@
-#My Configuration
+# My Configuration
 
 This repository contains my configuration files for the following:
 
