@@ -7,7 +7,7 @@ if [[ "$USER" != "root" ]]; then
 	export BACKUP="$HOME/backup/dotfiles"
 	if [ -f "/bin/rustc" ]; then
 		export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-	}
+	fi
 	export GOPATH="$HOME/files/gospace"
 	export PATH="${PATH}:${GOPATH}/bin"
 fi

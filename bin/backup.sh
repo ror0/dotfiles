@@ -1,4 +1,5 @@
 [ -z "$BACKUP" ] && { echo "Please set the BACKUP env variable"; exit 1; }
+[ -z "$XDG_CONFIG_HOME" ] && { export XDG_CONFIG_HOME=$HOME/.config; }
 
 RSYNC_COMMAND="rsync --update --recursive --copy-links --perms --owner --group --devices --specials --delete --times --verbose --progress --human-readable"
 

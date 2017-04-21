@@ -9,7 +9,10 @@ Plug 'ap/vim-buftabline'
 Plug 'jiangmiao/auto-pairs'
 
 " Completion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+let hostname = substitute(system('hostname'), '\n', '', '')
+if hostname == "getafix"
+	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+endif
 
 " Languages
 Plug 'rust-lang/rust.vim'
