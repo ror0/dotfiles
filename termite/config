@@ -7,10 +7,10 @@ cursor_shape = block
 dynamic_title = true
 filter_unmatched_urls = true
 
-font = Siji 11.5
-font = Font Awesome 11.5
+font = Siji 12
+font = Font Awesome 12
 #font = Dejavu Sans Mono 11
-font = Source Code Pro 11.5
+font = Source Code Pro 12
 
 fullscreen = true
 mouse_autohide = false

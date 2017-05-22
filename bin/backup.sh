@@ -33,5 +33,8 @@ eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/rofi $BACKUP"
 #Backup Termite settings
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/termite $BACKUP"
 
+#Backup tmux settings
+eval "$RSYNC_COMMAND $HOME/.tmux.conf $BACKUP/tmux"
+
 # Backup scripts
 eval "$RSYNC_COMMAND $HOME/bin $BACKUP"

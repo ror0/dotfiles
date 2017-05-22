@@ -56,13 +56,15 @@ if has("gui_running")
     set guitablabel=%M\ %t
 
     " Set the font for each operating system
-    if has("gui_gtk2")
-        set guifont=DejaVuSansMono\ 9
-    elseif has("gui_macvim")
-        set guifont=Menlo\ Regular:h14
-    elseif has("gui_win32")
-        set guifont=Consolas:h10:cANSI
-    endif
+	if has("gui_running")
+		if has("unix")
+			set guifont=Source\ Code\ Pro\ 12
+		elseif has("mac")
+			set guifont=Menlo\ Regular:h14
+		elseif has("win32")
+			set guifont=Consolas:h10:cANSI
+		endif
+	endif
 endif
 
 
@@ -82,6 +84,16 @@ set foldmethod=syntax
 au BufRead * normal zR
 
 
+" ======== Tabline settings ========
+hi TabLine		ctermfg=0	ctermbg=4
+hi TabLineSel	ctermfg=0	ctermbg=6
+hi TablineFill	ctermfg=0	ctermbg=235
+
+
+" ======== Seperator settings ========
+set fillchars=vert:\ ,fold:\ 
+
+
 " ======== Statusline settings ======== 
 set laststatus=2
 
@@ -91,6 +103,12 @@ hi User2	ctermfg=1	ctermbg=235
 hi User3	ctermfg=5	ctermbg=235
 hi User4	ctermfg=2	ctermbg=235
 hi User5	ctermfg=11	ctermbg=235
+
+hi User1	guifg=#E1AA5D	guibg=#262626
+hi User2	guifg=#E84F4F	guibg=#262626
+hi User3	guifg=#9B64FB	guibg=#262626
+hi User4	guifg=#B8D68C	guibg=#262626
+hi User5	guifg=#F39D21	guibg=#262626
 
 set statusline=
 set statusline +=%1*\ [%n]\ %*		" Buffer number
@@ -103,7 +121,7 @@ set statusline +=%2*\ [%L]%*		" Total lines
 
 
 " ======== Netrw settings ========
-let g:netrw_liststyle=0         " thin (change to 3 for tree)
+let g:netrw_liststyle=3         " thin (change to 3 for tree)
 let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
 let g:netrw_preview=1           " open previews vertically

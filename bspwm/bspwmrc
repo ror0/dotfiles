@@ -16,7 +16,6 @@ bspc config gapless_monocle			false
 bspc config auto_cancel				true
 bspc config click_to_focus			true
 
-
 bspc monitor --reset-desktops 1 2 3 4 5
 
 bspc rule --add Gimp follow=on state=floating
@@ -26,6 +25,7 @@ bspc rule --add qemu state=floating
 bspc rule --add cmake-gui state=floating
 bspc rule --add gpick state=floating
 bspc rule --add zathura state=tiled
+bspc rule --add Emacs state=tiled
 
 feh --bg-fill $HOME/pics/wallpaper/low_poly_mountains.jpg
 xsetroot -cursor_name left_ptr
