@@ -1,6 +1,7 @@
 [bar/top]
 
-monitor = eDP-1
+monitor = DP-1
+monitor-fallback = eDP-1
 
 width = 100%
 height = 25
@@ -15,8 +16,9 @@ module-margin-right = 1
 spacing = 1
 
 font-0 = DejaVuSansMono:size=10.5;1
-font-1 = FontAwesome5Free:size=10.5;1
+font-1 = FontAwesome5Free:size=10.5;2
 font-2 = WunconSiji:size=10.5;1
+font-3 = FontAwesome5Free:size=10.5:style=Solid;2
 
 modules-left = shutdown
 modules-center = bspwm
@@ -35,15 +37,15 @@ type = internal/bspwm
 
 format = <label-state>
 
-label-focused = "  "
+label-focused = " %{T4}%{T-} "
 label-focused-foreground = #ffffff 
-label-occupied = "  "
+label-occupied = " %{T4}%{T-} "
 label-occupied-foreground = #404040
 
-label-empty = "  "
+label-empty = "  "
 label-empty-foreground = #404040
 
-label-urgent = "  "
+label-urgent = " %{T4}%{T-} "
 label-urgent-foreground = #e84f4f
 
 [module/battery]
