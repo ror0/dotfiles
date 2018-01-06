@@ -29,5 +29,5 @@ bspc rule --add Emacs state=tiled
 
 feh --bg-fill $HOME/pics/wallpaper/low_poly_mountains.jpg
 xsetroot -cursor_name left_ptr
-compton -b -f --fade-exclude 'class_g = "i3lock"'
+#compton -b -f --paint-on-overlay --fade-exclude 'class_g = "i3lock"'
 polybar top -r &

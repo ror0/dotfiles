@@ -7,18 +7,26 @@ Plug 'nanotech/jellybeans.vim'
 " Utility
 Plug 'ap/vim-buftabline'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-gitgutter'
+
+" Linter
+Plug 'w0rp/ale'
 
 " Completion
 let hostname = substitute(system('hostname'), '\n', '', '')
 if hostname == "getafix"
-	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+	"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+	Plug 'r10o/YouCompleteMe', { 'do': './install.py --all' }
 endif
 
 " Languages
 Plug 'rust-lang/rust.vim'
+Plug 'vim-python/python-syntax'
 Plug 'cespare/vim-toml'
 Plug 'tikhomirov/vim-glsl'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'othree/html5.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -26,7 +34,8 @@ call plug#end()
 
 " ======== Plugin settings ======== 
 " YouCompleteMe
-"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_switch_local_semantic = 1
 
 " Jellybeans
 let g:jellybeans_overrides = {

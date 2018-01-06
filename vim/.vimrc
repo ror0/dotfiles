@@ -5,6 +5,7 @@ silent so $HOME/.vim/plugins.vim
 " ======== General settings ========
 set number						" Line numbering
 set visualbell					" No bell noise
+set t_vb=						" No visual bell
 set showcmd						" Show incomplete commands below
 set ignorecase					" Ignore case when searching
 set smartcase					" Override ignorecase when an upper case character is used
@@ -85,8 +86,6 @@ au BufRead * normal zR
 
 
 " ======== Tabline settings ========
-hi TabLine		ctermfg=0	ctermbg=4
-hi TabLineSel	ctermfg=0	ctermbg=6
 hi TablineFill	ctermfg=0	ctermbg=235
 
 

@@ -1,7 +1,7 @@
 [options]
 allow_bold = true
 audible_bell = false
-browser = chromium
+browser = firefox-developer
 clickable_url = true
 cursor_shape = block
 dynamic_title = true

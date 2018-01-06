@@ -7,7 +7,7 @@ map <Space> <leader>
 nmap <leader>w :w!<cr>	
 
 " Semicolon also opens command bar
-nnoremap ; :
+"nnoremap ; :
 
 " ======== Movement mappings ======== 
 " Treat wrapped lines as seperate lines
