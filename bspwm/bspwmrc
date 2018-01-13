@@ -1,22 +1,25 @@
 #!/usr/bin/sh
 
-bspc config normal_border_color		\#202020
-bspc config active_border_color		\#777777
-bspc config focused_border_color	\#dddddd
-bspc config presel_feedback_color	\#dddddd
+bspc config normal_border_color			\#202020
+bspc config active_border_color			\#777777
+bspc config focused_border_color		\#dddddd
+bspc config presel_feedback_color		\#dddddd
 
-bspc config split_ratio				0.5
+bspc config split_ratio					0.5
 
-bspc config border_width			2
-bspc config window_gap				20
-bspc config top_padding				25
+bspc config border_width				2
+bspc config window_gap					20
+bspc config top_padding					25
 
-bspc config borderless_monocle		false
-bspc config gapless_monocle			false
-bspc config auto_cancel				true
-bspc config click_to_focus			true
+bspc config borderless_monocle			false
+bspc config gapless_monocle				false
+bspc config click_to_focus				any
+bspc config swallow_first_click			true
+bspc config remove_disabled_monitors	true
+bspc config remove_unplugged_monitors	true
+bspc config merge_overlapping_monitors	true
 
-bspc monitor --reset-desktops 1 2 3 4 5
+bspc monitor primary --reset-desktops 1 2 3 4 5
 
 bspc rule --add Gimp follow=on state=floating
 bspc rule --add xcalc state=floating
@@ -27,7 +30,17 @@ bspc rule --add gpick state=floating
 bspc rule --add zathura state=tiled
 bspc rule --add Emacs state=tiled
 
-feh --bg-fill $HOME/pics/wallpaper/low_poly_mountains.jpg
+feh --bg-fill $HOME/pics/wallpaper/low_poly_canyon.jpg
 xsetroot -cursor_name left_ptr
-#compton -b -f --paint-on-overlay --fade-exclude 'class_g = "i3lock"'
-polybar top -r &
+
+polybar_config=""
+
+if [ -n "$(lsmod | grep -i nvidia)" ]; then
+	polybar_config=$HOME/.config/polybar/nvidia-config
+else
+	polybar_config=$HOME/.config/polybar/config
+fi
+
+killall polybar
+polybar top -r -l error -c $polybar_config &
+

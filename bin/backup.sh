@@ -38,3 +38,8 @@ eval "$RSYNC_COMMAND $HOME/.tmux.conf $BACKUP/tmux"
 
 # Backup scripts
 eval "$RSYNC_COMMAND $HOME/bin $BACKUP"
+
+# Commit and push backup
+cd $HOME/backup/dotfiles
+git commit -a -m "$(date)"
+git push
