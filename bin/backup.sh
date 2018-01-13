@@ -41,5 +41,6 @@ eval "$RSYNC_COMMAND $HOME/bin $BACKUP"
 
 # Commit and push backup
 cd $HOME/backup/dotfiles
-git commit -a -m "$(date)"
+git add -A
+git commit -m "$(date)"
 git push
