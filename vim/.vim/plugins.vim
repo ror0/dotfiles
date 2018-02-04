@@ -16,8 +16,8 @@ Plug 'w0rp/ale'
 " Completion
 let hostname = substitute(system('hostname'), '\n', '', '')
 if hostname == "getafix"
-	"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
-	Plug 'r10o/YouCompleteMe', { 'do': './install.py --all' }
+	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+	"Plug 'r10o/YouCompleteMe', { 'do': './install.py --all' }
 endif
 
 " Languages
@@ -35,7 +35,6 @@ call plug#end()
 " ======== Plugin settings ======== 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_switch_local_semantic = 1
 
 " Jellybeans
 let g:jellybeans_overrides = {

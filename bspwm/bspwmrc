@@ -19,6 +19,12 @@ bspc config remove_disabled_monitors	true
 bspc config remove_unplugged_monitors	true
 bspc config merge_overlapping_monitors	true
 
+if [ -n "$(lsmod | grep -i nvidia)" ]; then
+	xrandr --output eDP-1-1 --primary
+else
+	xrandr --output eDP-1 --primary
+fi
+
 bspc monitor primary --reset-desktops 1 2 3 4 5
 
 bspc rule --add Gimp follow=on state=floating
