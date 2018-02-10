@@ -36,6 +36,12 @@ call plug#end()
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
+" ale
+let g:ale_lint_on_save = 1
+"let g:ale_linters = {
+"	\'python': ['pylint', 'autopep8'],
+"	\}
+
 " Jellybeans
 let g:jellybeans_overrides = {
 	\    'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': '151515' },

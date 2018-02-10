@@ -4,7 +4,7 @@ export PATH="$PATH:$HOME/bin:$HOME/.gem/ruby/2.4.0/bin"
 export VISUAL="vim"
 export EDITOR=$VISUAL
 if [[ "$USER" != "root" ]]; then
-	export BROWSER="firefox-developer"
+	export BROWSER="firefox-developer-edition"
 	export BACKUP="$HOME/backup/dotfiles"
 	if [ -f "/bin/rustc" ]; then
 		export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
