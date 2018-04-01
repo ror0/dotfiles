@@ -14,8 +14,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 
 " Completion
-let hostname = substitute(system('hostname'), '\n', '', '')
-if hostname == "getafix"
+if has('unix')
 	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 	"Plug 'r10o/YouCompleteMe', { 'do': './install.py --all' }
 endif
