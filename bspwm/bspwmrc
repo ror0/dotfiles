@@ -27,11 +27,14 @@ if [ -n "$(lsmod | grep -i nvidia)" ]; then
 fi
 
 xrandr --output eDP-1$adj --primary
-bspc monitor primary --reset-desktops 1 2 3 4 5
+bspc monitor eDP-1$adj --reset-desktops 1 2 3 4 5
 
 if [ -n "$(xrandr | grep " connected" | grep "^DP-1")" ]; then
-	xrandr --output DP-1$adj --primary
-	bspc monitor primary --reset-desktops 6 7 8 9 10
+	xrandr --output DP-1$adj --auto --primary --right-of eDP-1$adj
+	bspc monitor DP-1$adj --reset-desktops 6 7 8 9 10
+else
+	xrandr --output DP-1$adj --off
+	bspc monitor DP-1$adj --remove
 fi
 
 bspc rule --add Gimp follow=on state=floating
@@ -40,8 +43,7 @@ bspc rule --add mirage state=floating
 bspc rule --add qemu state=floating
 bspc rule --add cmake-gui state=floating
 bspc rule --add gpick state=floating
-bspc rule --add zathura state=tiled
-bspc rule --add Emacs state=tiled
+bspc rule --add galculator state=floating
 
 feh --bg-fill $HOME/pics/wallpaper/low_poly_canyon.jpg
 xsetroot -cursor_name left_ptr
