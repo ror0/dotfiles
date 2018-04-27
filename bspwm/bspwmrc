@@ -44,6 +44,7 @@ bspc rule --add qemu state=floating
 bspc rule --add cmake-gui state=floating
 bspc rule --add gpick state=floating
 bspc rule --add galculator state=floating
+bspc rule --add Emacs state=tiled
 
 feh --bg-fill $HOME/pics/wallpaper/low_poly_canyon.jpg
 xsetroot -cursor_name left_ptr

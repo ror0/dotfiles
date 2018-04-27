@@ -46,6 +46,8 @@ let g:ale_lint_on_insert_leave = 0
 
 let g:ale_lint_delay = 100
 
+let g:ale_linters = {'c': ['clang']}
+
 nnoremap <leader>l :ALELint<CR>
 
 " Jellybeans

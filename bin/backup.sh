@@ -4,10 +4,10 @@
 RSYNC_COMMAND="rsync --update --recursive --copy-links --perms --owner --group --devices --specials --delete --times --verbose --progress --human-readable"
 
 # Backup Vim settings
-eval "$RSYNC_COMMAND --exclude=autoload --exclude=plugged --exclude=.netrwhist $HOME/.vim $HOME/.vimrc $BACKUP/vim"
+eval "$RSYNC_COMMAND --exclude=autoload --exclude=plugged --exclude=.netrwhist --exclude=swap $HOME/.vim $HOME/.vimrc $BACKUP/vim"
 
 # Backup Neovim settings
-eval "$RSYNC_COMMAND --exclude=autoload --exclude=plugged --exclude=.netrwhist $XDG_CONFIG_HOME/nvim $BACKUP"
+eval "$RSYNC_COMMAND --exclude=autoload --exclude=plugged --exclude=.netrwhist --exclude=swap $XDG_CONFIG_HOME/nvim $BACKUP"
 
 # Backup X.org settings
 eval "$RSYNC_COMMAND $HOME/.Xresources $HOME/.xinitrc $HOME/.dircolors $BACKUP/xorg"
