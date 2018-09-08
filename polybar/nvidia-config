@@ -1,6 +1,6 @@
 [bar/top]
 
-monitor = eDP-1-1
+monitor = DP-4
 
 width = 100%
 height = 25
@@ -24,6 +24,8 @@ modules-center = bspwm
 modules-right = network volume battery date
 
 wm-restack = bspwm
+
+enable-ipc = true
 
 [module/date]
 type = internal/date
@@ -74,7 +76,7 @@ animation-charging-4 = 
 animation-charging-framerate = 750
 
 [module/volume]
-type = internal/volume
+type = internal/pulseaudio
 
 master-mixer = Master
 
@@ -88,7 +90,7 @@ ramp-volume-2 = 
 
 [module/network]
 type = internal/network
-interface = wlp2s0
+interface = wlp36s0
 
 format-connected = <ramp-signal>
 

@@ -140,24 +140,27 @@ super + {Left,Down,Up,Right}
 
 # mute
 XF86AudioMute
-	amixer -q sset Master toggle
+	amixer -q sset "$(amixer scontrols | sed -n "1 s/.*'\(.*\)',.*/\1/p")" toggle
 
 # volume down
 XF86AudioLowerVolume
-	amixer -q sset Master 5%-
+	amixer -q sset "$(amixer scontrols | sed -n "1 s/.*'\(.*\)',.*/\1/p")" 5%-
 
 # volume up
 XF86AudioRaiseVolume
-	amixer -q sset Master 5%+
+	amixer -q sset "$(amixer scontrols | sed -n "1 s/.*'\(.*\)',.*/\1/p")" 5%+
 
 # previous song
 XF86AudioPrev
+	playerctl previous
 
 # play song
 XF86AudioPlay
+	playerctl play-pause
 
 # next song
 XF86AudioNext
+	playerctl next
 
 # lower brightness
 XF86MonBrightnessDown

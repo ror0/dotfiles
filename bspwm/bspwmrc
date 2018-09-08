@@ -19,23 +19,9 @@ bspc config remove_disabled_monitors	true
 bspc config remove_unplugged_monitors	true
 bspc config merge_overlapping_monitors	true
 
-adj=""
-polybar_config=$HOME/.config/polybar/config
-if [ -n "$(lsmod | grep -i nvidia)" ]; then
-	adj="-1"
-	polybar_config=$HOME/.config/polybar/nvidia-config
-fi
+polybar_config=$HOME/.config/polybar/nvidia-config
 
-xrandr --output eDP-1$adj --primary
-bspc monitor eDP-1$adj --reset-desktops 1 2 3 4 5
-
-if [ -n "$(xrandr | grep " connected" | grep "^DP-1")" ]; then
-	xrandr --output DP-1$adj --auto --primary --right-of eDP-1$adj
-	bspc monitor DP-1$adj --reset-desktops 6 7 8 9 10
-else
-	xrandr --output DP-1$adj --off
-	bspc monitor DP-1$adj --remove
-fi
+bspc monitor DP-4 --reset-desktops 1 2 3 4 5
 
 bspc rule --add Gimp follow=on state=floating
 bspc rule --add xcalc state=floating
@@ -46,12 +32,9 @@ bspc rule --add gpick state=floating
 bspc rule --add galculator state=floating
 bspc rule --add Emacs state=tiled
 
-feh --bg-fill $HOME/pics/wallpaper/low_poly_canyon.jpg
+feh --bg-fill $HOME/pics/snowy_trees.png
 xsetroot -cursor_name left_ptr
 
 killall polybar
-polybar top -r -l error -c $polybar_config &
+polybar top -q -r -l error -c $polybar_config &
 
-if [ -n "$(xrandr | grep " connected" | grep "^DP-1")" ]; then
-	polybar top -r -l error -c $polybar_config-ext &
-fi
