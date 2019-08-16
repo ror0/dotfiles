@@ -14,7 +14,7 @@ module-margin-left = 1
 module-margin-right = 1
 spacing = 1
 
-font-0 = DejaVuSansMono:size=10.5;1
+font-0 = SourceCodePro:size=10.5;1
 font-1 = FontAwesome5Free:size=10.5;2
 font-2 = WunconSiji:size=10.5;1
 font-3 = FontAwesome5Free:size=10.5:style=Solid;2
@@ -74,7 +74,7 @@ animation-charging-4 = 
 animation-charging-framerate = 750
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 master-mixer = Master
 

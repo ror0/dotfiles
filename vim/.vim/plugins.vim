@@ -15,10 +15,8 @@ Plug 'w0rp/ale'
 
 " Completion
 let hostname = substitute(system('hostname'), '\n', '', '')
-if hostname == "getafix" 
+if hostname == "getafix"
 	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
-elseif hostname == "vitalstatistix"
-	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 endif
 
 " Languages
