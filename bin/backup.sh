@@ -39,9 +39,6 @@ eval "$RSYNC_COMMAND $HOME/.tmux.conf $BACKUP/tmux"
 # Backup scripts
 eval "$RSYNC_COMMAND $HOME/bin $BACKUP"
 
-# Backup keyboard settings
-eval "$RSYNC_COMMAND $HOME/files/repos/qmk_firmware/keyboards/ergodox_infinity/keymaps/rohan/* $BACKUP/ergo"
-
 # Commit and push backup
 cd $HOME/backup/dotfiles
 git add -A
