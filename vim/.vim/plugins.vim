@@ -16,7 +16,7 @@ Plug 'w0rp/ale'
 " Completion
 let hostname = substitute(system('hostname'), '\n', '', '')
 if hostname == "getafix"
-	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer --go-completer --ts-completer' }
 endif
 
 " Languages

@@ -39,6 +39,12 @@ eval "$RSYNC_COMMAND $HOME/.tmux.conf $BACKUP/tmux"
 # Backup scripts
 eval "$RSYNC_COMMAND $HOME/bin $BACKUP"
 
+# Backup gtk.css settings
+eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/gtk-3.0 $BACKUP"
+
+# Backup pics
+eval "$RSYNC_COMMAND $HOME/pics $BACKUP"
+
 # Commit and push backup
 cd $HOME/backup/dotfiles
 git add -A

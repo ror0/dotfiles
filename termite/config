@@ -9,7 +9,6 @@ filter_unmatched_urls = true
 
 font = Siji 12
 font = Font Awesome 12
-#font = Dejavu Sans Mono 11
 font = Source Code Pro 12
 
 fullscreen = true

@@ -11,12 +11,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+xrandr --auto
+
 # Remove computer beep at boot
 xset -b
 
 # Parse the .Xresources file at startx
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-sxhkd &
-exec bspwm
+exec i3
+#exec openbox-session
 

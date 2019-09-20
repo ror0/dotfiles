@@ -1,7 +1,5 @@
 [bar/top]
 
-monitor = eDP-1
-
 width = 100%
 height = 25
 
@@ -14,22 +12,44 @@ module-margin-left = 1
 module-margin-right = 1
 spacing = 1
 
-font-0 = SourceCodePro:size=10.5;1
-font-1 = FontAwesome5Free:size=10.5;2
-font-2 = WunconSiji:size=10.5;1
-font-3 = FontAwesome5Free:size=10.5:style=Solid;2
+font-0 = SourceCodePro:size=9;1
+font-1 = FontAwesome5Free:size=10;2
+font-2 = Siji:size=10.5;1
+font-3 = FontAwesome5Free:size=9:style=Solid;2
 
 modules-left = shutdown
-modules-center = bspwm
-modules-right = network volume battery date
+modules-center = i3
+modules-right = network alsa battery date
 
-wm-restack = bspwm
+override-redirect = true
+wm-name = i3
+wm-restack = i3
 
 [module/date]
 type = internal/date
 
 date = %l:%M %P
 date-alt = %x
+
+[module/i3]
+type = internal/i3
+
+format = <label-state>
+
+label-focused = " %{T4}%{T-} "
+label-focused-foreground = #ffffff 
+
+label-unfocused = " %{T4}%{T-} "
+label-unfocused-foreground = #404040
+
+label-visible = " %{T4}%{T-} "
+label-visible-foreground = #404040
+
+label-empty = "  "
+label-empty-foreground = #404040
+
+label-urgent = " %{T4}%{T-} "
+label-urgent-foreground = #e84f4f
 
 [module/bspwm]
 type = internal/bspwm
@@ -73,8 +93,8 @@ animation-charging-4 = 
 
 animation-charging-framerate = 750
 
-[module/volume]
-type = internal/volume
+[module/alsa]
+type = internal/alsa
 
 master-mixer = Master
 
@@ -111,7 +131,7 @@ label-separator = "  "
 menu-0-0 = Lock
 menu-0-0-exec = lock.sh
 menu-0-1 = Logoff
-menu-0-1-exec = bspc quit
+menu-0-1-exec = i3-msg exit
 menu-0-2 = Reboot
 menu-0-2-exec = sudo reboot
 menu-0-3 = Shutdown
