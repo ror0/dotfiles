@@ -16,10 +16,11 @@ Plug 'w0rp/ale'
 " Completion
 let hostname = substitute(system('hostname'), '\n', '', '')
 if hostname == "getafix"
-	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer --go-completer --ts-completer' }
+	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --clangd-completer --rust-completer --go-completer --ts-completer' }
 endif
 
 " Languages
+Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-python/python-syntax'
 Plug 'cespare/vim-toml'
@@ -33,7 +34,7 @@ call plug#end()
 
 " ======== Plugin settings ======== 
 " YouCompleteMe
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_show_diagnostics_ui = 0
 
 " ALE
@@ -45,7 +46,7 @@ let g:ale_lint_on_insert_leave = 0
 
 let g:ale_lint_delay = 100
 
-let g:ale_linters = {'c': ['clang']}
+let g:ale_linters = {'c': ['clangd']}
 
 nnoremap <leader>l :ALELint<CR>
 
