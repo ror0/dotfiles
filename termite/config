@@ -7,8 +7,7 @@ cursor_shape = block
 dynamic_title = true
 filter_unmatched_urls = true
 
-font = Siji 12
-font = Font Awesome 12
+font = Material Design Icons 12
 font = Source Code Pro 12
 
 fullscreen = true

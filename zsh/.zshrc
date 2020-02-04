@@ -60,11 +60,11 @@ precmd () { vcs_info }
 if [[ "$USER" == "root" ]]; then
 	PROMPT='${vcs_info_msg_0_}'
 	PROMPT+="%{$fg[green]%} >  %{$reset_color%}"
-	RPROMPT="%{$fg[green]%}%~%{$reset_color%}"
+	RPROMPT="%{$fg[green]%}%c%{$reset_color%}"
 else
 	PROMPT='${vcs_info_msg_0_}'
 	PROMPT+="%{$fg[blue]%} >  %{$reset_color%}"
-	RPROMPT="%{$fg[blue]%}%~%{$reset_color%}"
+	RPROMPT="%{$fg[blue]%}%c%{$reset_color%}"
 fi
 
 # History

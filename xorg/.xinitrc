@@ -19,6 +19,20 @@ xset -b
 # Parse the .Xresources file at startx
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-exec i3
-#exec openbox-session
+# Make sure that the session type is set correctly
+export XDG_SESSION_TYPE=X11
+
+xautolock -time 10 -locker lock.sh &
+
+case $1 in
+	i3)
+		exec i3
+		;;
+	openbox)
+		exec openbox-session
+		;;
+	*)
+		exec i3
+		;;
+esac
 
