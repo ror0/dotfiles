@@ -76,12 +76,10 @@ if has("gui_running")
     set guitablabel=%M\ %t
 
     " Set the font for each operating system
-	if has("unix")
+	if g:os == "Windows"
+		set guifont=Source_Code_Pro:h14:cANSI:qDRAFT
+	else
 		set guifont=Source\ Code\ Pro\ 12
-	elseif has("mac")
-		set guifont=Menlo\ Regular:h14
-	elseif has("win32")
-		set guifont=Consolas:h10:cANSI
 	endif
 endif
 
