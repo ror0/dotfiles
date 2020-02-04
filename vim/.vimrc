@@ -17,7 +17,7 @@ if !exists("g:vimdir")
 endif
 
 " ======== Plugin sourcing ========
-execute "silent so" . expand($HOME) . "/" . g:vimdir . "/plugins.vim"
+execute "silent so " . expand($HOME) . "/" . g:vimdir . "/plugins.vim"
 
 
 " ======== General settings ========
@@ -144,5 +144,5 @@ let g:netrw_preview=1           " open previews vertically
 
 
 " ======== Mapping sourcing ========
-execute "silent so" . expand($HOME) . "/" . g:vimdir . "/mappings.vim"
+execute "silent so " . expand($HOME) . "/" . g:vimdir . "/mappings.vim"
 
