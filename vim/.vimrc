@@ -1,5 +1,23 @@
+" ======== OS settings ========
+if !exists("g:os")
+	if has("win64") || has("win32") || has("win16")
+		let g:os = "Windows"
+	else
+		let g:os = substitute(system('uname'), '\n', '', '')
+	endif
+endif
+
+if !exists("g:vimdir")
+	if g:os == "Windows"
+		let g:vimdir = "vimfiles"
+		set backspace=indent,eol,start
+	else
+		let g:vimdir = ".vim"
+	endif
+endif
+
 " ======== Plugin sourcing ========
-silent so $HOME/.vim/plugins.vim
+execute "silent so" . expand($HOME) . "/" . g:vimdir . "/plugins.vim"
 
 
 " ======== General settings ========
@@ -126,5 +144,5 @@ let g:netrw_preview=1           " open previews vertically
 
 
 " ======== Mapping sourcing ========
-silent so ~/.vim/mappings.vim
+execute "silent so" . expand($HOME) . "/" . g:vimdir . "/mappings.vim"
 

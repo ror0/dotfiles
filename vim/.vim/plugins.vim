@@ -1,4 +1,10 @@
 " ======== vim-plug ======== 
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin() 
 " Colorscheme
 Plug 'nanotech/jellybeans.vim'
@@ -62,8 +68,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Jellybeans
 let g:jellybeans_overrides = {
-	\    'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': '151515' },
-	\}
+			\    'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': '151515' },
+			\}
 let g:jellybeans_use_gui_italics = 0
 
 " Buftabline
