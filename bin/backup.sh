@@ -1,7 +1,7 @@
 [ -z "$BACKUP" ] && { echo "Please set the BACKUP env variable"; exit 1; }
 [ -z "$XDG_CONFIG_HOME" ] && { export XDG_CONFIG_HOME=$HOME/.config; }
 
-RSYNC_COMMAND="rsync --update --recursive --copy-links --perms --owner --group --devices --specials --delete --times --verbose --progress --human-readable"
+RSYNC_COMMAND="rsync --update --recursive --copy-links --perms --owner --group --devices --specials --delete --times --verbose --progress --human-readable --ignore-missing-args"
 
 # Backup Vim settings
 eval "$RSYNC_COMMAND --exclude=autoload --exclude=plugged --exclude=.netrwhist --exclude=swap $HOME/.vim $HOME/.vimrc $BACKUP/vim"
