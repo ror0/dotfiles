@@ -1,6 +1,7 @@
 [user]
 	email = rao.rohan.a@gmail.com
 	name = Rohan Rao
+	signingkey = 6BB003115E21ACB7
 [color]
 	ui = true
 	interactive = auto
@@ -14,3 +15,5 @@
 	excludesfile = ~/.gitignore
 [credential]
 	helper = cache
+[commit]
+	gpgsign = true

@@ -5,7 +5,7 @@ export TERMINAL="alacritty"
 export VISUAL="vim"
 export EDITOR=$VISUAL
 if [[ "$USER" != "root" ]]; then
-	export BROWSER="chromium"
+	export BROWSER="firefox"
 	export BACKUP="$HOME/backup/dotfiles"
 	if [ -f "/bin/rustc" ]; then
 		export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"

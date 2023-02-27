@@ -30,9 +30,6 @@ eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/polybar $BACKUP"
 #Backup Rofi settings
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/rofi $BACKUP"
 
-#Backup Termite settings
-eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/termite $BACKUP"
-
 #Backup Alacritty settings
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/alacritty $BACKUP"
 
@@ -51,8 +48,11 @@ eval "$RSYNC_COMMAND $HOME/pics $BACKUP"
 # Backup compton 
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/compton $BACKUP"
 
+# Backup i3 
+eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/i3 $BACKUP"
+
 # Commit and push backup
 cd $HOME/backup/dotfiles
 git add -A
-git commit -m "$(date)"
+git commit -S -m "$(date)"
 git push
