@@ -23,6 +23,7 @@ xset -b
 export XDG_SESSION_TYPE=X11
 
 xautolock -time 10 -locker lock.sh &
+udiskie --notify --automount --no-tray &
 
 case $1 in
 	i3)

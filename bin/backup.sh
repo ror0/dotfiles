@@ -33,6 +33,9 @@ eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/rofi $BACKUP"
 #Backup Termite settings
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/termite $BACKUP"
 
+#Backup Alacritty settings
+eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/alacritty $BACKUP"
+
 #Backup tmux settings
 eval "$RSYNC_COMMAND $HOME/.tmux.conf $BACKUP/tmux"
 
@@ -45,7 +48,7 @@ eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/gtk-3.0 $BACKUP"
 # Backup pics
 eval "$RSYNC_COMMAND $HOME/pics $BACKUP"
 
-# Backup pics
+# Backup compton 
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/compton $BACKUP"
 
 # Commit and push backup

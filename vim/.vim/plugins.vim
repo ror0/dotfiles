@@ -14,11 +14,13 @@ Plug 'ap/vim-buftabline'
 Plug 'cohama/lexima.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-characterize'
 
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Languages
+Plug 'rust-lang/rust.vim'
 Plug 'vim-python/python-syntax'
 Plug 'cespare/vim-toml'
 Plug 'tikhomirov/vim-glsl'

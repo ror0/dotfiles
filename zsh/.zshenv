@@ -1,7 +1,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$PATH:$HOME/bin:$HOME/.gem/ruby/2.4.0/bin"
 
-export TERMINAL="termite"
+export TERMINAL="alacritty"
 export VISUAL="vim"
 export EDITOR=$VISUAL
 if [[ "$USER" != "root" ]]; then

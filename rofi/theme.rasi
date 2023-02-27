@@ -1,0 +1,148 @@
+* {
+    text-color:  #ffffff;
+	background-color: rgba(21, 21, 21, 100%);
+    dark: #101010;
+    // Black
+    black:       #101010;
+    lightblack:  #151515;
+    //
+    // Red
+    red:         #E84F4F;
+    lightred:    #D23D3D;
+    //
+    // Green
+    green:       #B8D68C;
+    lightgreen:  #A0CF5D;
+    //
+    // Yellow
+    yellow:      #E1AA5D;
+    lightyellow:     #F39D21;
+    //
+    // Blue
+    blue:      #7DC1CF;
+    lightblue:     #4E9FB1;
+    //
+    // Magenta
+    magenta:      #9B64FB;
+    lightmagenta:     #8542FF;
+    //
+    // Cyan
+    cyan:      #6D878D;
+    lightcyan:     #42717B;
+    //
+    // White
+    white:      #DDDDDD;
+    lightwhite:     #FFFFFF;
+    //
+    // Bold, Italic, Underline
+    highlight:     bold #ffffff;
+}
+
+window {
+    height: 100%;
+    width: 101%;
+    location: center;
+    anchor:   center;
+    border:  0px 2px 0px 0px;
+    text-color: @lightwhite;
+	transparency: "real";
+}
+
+mode-switcher {
+    padding: 4px;
+}
+
+button selected {
+    border-color: @lightgreen;
+    text-color: @lightgreen;
+}
+
+case-indicator {
+    spacing:    0;
+    text-color: @lightwhite;
+}
+ 
+entry {
+    spacing:    0;
+    text-color: @lightwhite;
+}
+ 
+prompt {
+    spacing:    0;
+    text-color: @lightwhite;
+}
+
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @lightwhite;
+}
+
+
+inputbar {
+    text-color: @lightgreen;
+    padding: 20px;
+
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+
+mainbox {
+	location: center;
+	anchor: center;
+	margin: 35%;
+    expand: true;
+    spacing: 0em;
+}
+
+listview {
+    padding: 20px;
+    dynamic: false;
+    lines: 0;
+}
+
+element {
+	padding: 5px;
+}
+
+element-text {
+    text-color:       inherit;
+}
+
+element selected normal {
+	text-color: @blue;
+}
+
+element normal active {
+    text-color: @lightblue;
+}
+
+element normal urgent {
+    text-color: @lightred;
+}
+
+element alternate normal { }
+
+element alternate active {
+    text-color: @lightblue;
+}
+
+element alternate urgent {
+    text-color: @lightred;
+}
+
+element selected active {
+    text-color: @blue;
+}
+
+element selected urgent {
+    text-color: @blue;
+}
+
+error-message {
+    expand: true;
+    border-color: darkred;
+    border: 2px;
+    padding: 1em;
+}
+
