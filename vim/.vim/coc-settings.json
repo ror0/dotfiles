@@ -8,5 +8,7 @@
 		}
 	},
 
-	"rust.all_targets": false
+	"rust.all_targets": false,
+    "suggest.enablePreselect": false,
+	"suggest.noselect": true
 }

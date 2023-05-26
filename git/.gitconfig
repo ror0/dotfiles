@@ -17,3 +17,5 @@
 	helper = cache
 [commit]
 	gpgsign = true
+[advice]
+	addIgnoredFile = false
