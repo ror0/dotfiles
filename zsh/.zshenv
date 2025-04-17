@@ -4,6 +4,7 @@ export PATH="$PATH:$HOME/bin:$HOME/.gem/ruby/2.4.0/bin"
 export TERMINAL="alacritty"
 export VISUAL="vim"
 export EDITOR=$VISUAL
+
 if [[ "$USER" != "root" ]]; then
 	export BROWSER="firefox"
 	export BACKUP="$HOME/backup/dotfiles"
@@ -13,3 +14,7 @@ if [[ "$USER" != "root" ]]; then
 	export GOPATH="$HOME/files/gospace"
 	export PATH="$PATH:$GOPATH/bin"
 fi
+
+export CC="/usr/bin/clang"
+export CXX="/usr/bin/clang++"
+

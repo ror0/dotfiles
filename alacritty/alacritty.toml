@@ -1,0 +1,42 @@
+[cursor.style]
+blinking = "on"
+shape = "Block"
+
+[env]
+TERM = "alacritty"
+
+[font]
+builtin_box_drawing = false
+size = 12
+
+[font.bold]
+family = "Source Code Pro"
+style = "Bold"
+
+[font.bold_italic]
+family = "Source Code Pro"
+style = "Bold Italic"
+
+[font.italic]
+family = "Source Code Pro"
+style = "Italic"
+
+[font.normal]
+family = "Source Code Pro"
+style = "Regular"
+
+[scrolling]
+history = 10000
+
+[terminal.shell]
+program = "/usr/bin/zsh"
+
+[window]
+dynamic_title = true
+title = "Alacritty"
+
+[window.padding]
+x = 20
+y = 20
+
+[terminal]
