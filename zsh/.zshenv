@@ -17,4 +17,5 @@ fi
 
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
+export CMAKE_GENERATOR="Ninja"
 

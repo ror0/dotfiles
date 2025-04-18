@@ -197,14 +197,14 @@ bindsym $mod+r mode "resize"
 #exec --no-startup-id feh --bg-fill ~/pics/nature.png
 
 # Start compton
-exec --no-startup-id compton -b
+exec_always --no-startup-id picom -b
 
 # Set background color
-exec --no-startup-id hsetroot -solid "#334455"
+exec_always --no-startup-id hsetroot -solid "#334455"
 
 # Start bar
-exec --no-startup-id polybar top
+exec_always --no-startup-id polybar top
 
 # Start bar
-exec --no-startup-id dunst
+exec_always --no-startup-id dunst
 

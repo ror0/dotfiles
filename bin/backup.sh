@@ -48,6 +48,9 @@ eval "$RSYNC_COMMAND $HOME/pics $BACKUP"
 # Backup compton 
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/compton $BACKUP"
 
+# Backup picom
+eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/picom $BACKUP"
+
 # Backup i3 
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/i3 $BACKUP"
 
