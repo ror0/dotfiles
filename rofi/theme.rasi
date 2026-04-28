@@ -1,6 +1,8 @@
 * {
     text-color:  #ffffff;
-	background-color: rgba(21, 21, 21, 100%);
+	background-color: transparent;
+
+	bg0: rgba(21, 21, 21, 70%);
     dark: #101010;
     // Black
     black:       #101010;
@@ -16,36 +18,36 @@
     //
     // Yellow
     yellow:      #E1AA5D;
-    lightyellow:     #F39D21;
+    lightyellow: #F39D21;
     //
     // Blue
     blue:      #7DC1CF;
-    lightblue:     #4E9FB1;
+    lightblue: #4E9FB1;
     //
     // Magenta
     magenta:      #9B64FB;
-    lightmagenta:     #8542FF;
+    lightmagenta: #8542FF;
     //
     // Cyan
     cyan:      #6D878D;
-    lightcyan:     #42717B;
+    lightcyan: #42717B;
     //
     // White
     white:      #DDDDDD;
-    lightwhite:     #FFFFFF;
+    lightwhite: #FFFFFF;
     //
     // Bold, Italic, Underline
     highlight:     bold #ffffff;
 }
 
 window {
-    height: 100%;
-    width: 101%;
+	fullscreen: true;
     location: center;
     anchor:   center;
-    border:  0px 2px 0px 0px;
+    border:  0px 0px 0px 0px;
     text-color: @lightwhite;
 	transparency: "real";
+	background-color: @bg0;
 }
 
 mode-switcher {
@@ -74,7 +76,7 @@ prompt {
 
 textbox-prompt-colon {
     expand:     false;
-    str:        ":";
+    str:        "";
     margin:     0px 0.3em 0em 0em ;
     text-color: @lightwhite;
 }
@@ -87,6 +89,12 @@ inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
+listview {
+    padding: 20px;
+    dynamic: false;
+    lines: 0;
+}
+
 mainbox {
 	location: center;
 	anchor: center;
@@ -95,18 +103,13 @@ mainbox {
     spacing: 0em;
 }
 
-listview {
-    padding: 20px;
-    dynamic: false;
-    lines: 0;
-}
-
 element {
 	padding: 5px;
 }
 
-element-text {
-    text-color:       inherit;
+element-text, element-icon {
+    text-color: inherit;
+    background-color: inherit;
 }
 
 element selected normal {
@@ -121,7 +124,8 @@ element normal urgent {
     text-color: @lightred;
 }
 
-element alternate normal { }
+element alternate normal {
+}
 
 element alternate active {
     text-color: @lightblue;

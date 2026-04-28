@@ -15,6 +15,7 @@ Plug 'cohama/lexima.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-characterize'
+Plug 'jasonccox/vim-wayland-clipboard'
 
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -26,6 +27,7 @@ Plug 'cespare/vim-toml'
 Plug 'tikhomirov/vim-glsl'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'othree/html5.vim'
+Plug 'elkowar/yuck.vim'
 
 " Add plugins to &runtimepath
 call plug#end()

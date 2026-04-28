@@ -54,6 +54,12 @@ eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/picom $BACKUP"
 # Backup i3 
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/i3 $BACKUP"
 
+# Backup hyprland
+eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/hypr $BACKUP"
+
+# Backup waybar
+eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/waybar $BACKUP"
+
 # Commit and push backup
 cd $HOME/backup/dotfiles
 git add -A

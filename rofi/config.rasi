@@ -38,8 +38,8 @@ configuration {
 /*	m: "-5";*/
 /*	filter: ;*/
 /*	dpi: -1;*/
-/*	threads: 0;*/
-/*	scroll-method: 0;*/
+/*	threads: 0; */
+	scroll-method: 1;
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	max-history-size: 25;*/
@@ -151,4 +151,4 @@ configuration {
 }
 
 //@theme "dmenu"
-@theme "/home/rohan/.config/rofi/theme.rasi"
+@theme "~/.config/rofi/theme.rasi"

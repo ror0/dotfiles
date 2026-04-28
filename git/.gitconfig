@@ -11,11 +11,11 @@
 	pretty = medium
 [push]
 	default = simple
-[core]
-	excludesfile = ~/.gitignore
 [credential]
 	helper = cache
 [commit]
 	gpgsign = true
 [advice]
 	addIgnoredFile = false
+[init]
+	defaultBranch = main

@@ -1,0 +1,79 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 35, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "custom/power"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "tray",
+        "network",
+		"wireplumber",
+        "battery",
+        "clock"
+    ],
+	"hyprland/workspaces": {
+		"format": "<span font='16'>{icon}</span>",
+		"on-click": "activate",
+		"format-icons": {
+			"active": "",
+			"default": "",
+			"empty": ":"
+		}
+	},
+	"wireplumber": {
+		"format": "<span font='14'>{volume}%</span>",
+		"format-muted": "<span font='18'>󰖁</span>"
+	},
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span font='14'>{icon}</span>",
+        "format-full": "<span font='14'>{icon}</span>",
+        "format-charging": "<span font='14'>󰂄</span>",
+        "format-plugged": "",
+        "format-alt": "{time} <span font='14'>{icon}</span>",
+		"format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "<span font='16'>{icon}</span>",
+        "format-ethernet": "<span font='16'></span>",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr} via {gwaddr}",
+        "format-linked": "<span font='16'></span>",
+        "format-disconnected": "<span font='16'>󰣼</span>",
+        "format-alt": "{essid} ({signalStrength}%)",
+		"format-icons": ["󰣾", "󰣴", "󰣶", "󰣸", "󰣺"]
+    },
+    "custom/power": {
+        "format" : "<span font='16'>󰐥</span>",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"logoff": "hyprctl dispatch exit && loginctl terminate-user $USER",
+			"shutdown": "systemctl poweroff",
+			"reboot": "systemctl reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    }
+}

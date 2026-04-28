@@ -21,18 +21,19 @@ xset -b
 
 # Make sure that the session type is set correctly
 export XDG_SESSION_TYPE=X11
+#export MOZ_GTK_TITLEBAR_DECORATION=client
 
 xautolock -time 10 -locker lock.sh &
 udiskie --notify --automount --no-tray &
 
 case $1 in
-	i3)
-		exec i3
-		;;
 	openbox)
+		export MOZ_GTK_TITLEBAR_DECORATION=client
+		export XDG_CURRENT_DESKTOP=openbox
 		exec openbox-session
 		;;
 	*)
+		export XDG_CURRENT_DESKTOP=i3
 		exec i3
 		;;
 esac

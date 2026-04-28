@@ -38,9 +38,6 @@ gaps top 35
 # Turn off focus follow mouse
 focus_follows_mouse off
 
-# Rounded corners
-border_radius 5
-
 # Media Keys
 bindsym XF86AudioMute exec amixer -q sset Master toggle
 bindsym XF86AudioLowerVolume exec amixer -q sset Master 10%-
@@ -196,7 +193,7 @@ bindsym $mod+r mode "resize"
 # Set wallpaper
 #exec --no-startup-id feh --bg-fill ~/pics/nature.png
 
-# Start compton
+# Start picom
 exec_always --no-startup-id picom -b
 
 # Set background color
