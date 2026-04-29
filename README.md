@@ -14,3 +14,5 @@ This repository contains my configuration files for the following:
 * Rofi
 * Termite
 * scripts
+* waybar
+* hyprland

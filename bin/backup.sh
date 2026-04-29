@@ -15,9 +15,6 @@ eval "$RSYNC_COMMAND $HOME/.Xresources $HOME/.xinitrc $HOME/.dircolors $BACKUP/x
 # Backup Zsh settings
 eval "$RSYNC_COMMAND $HOME/.zshrc $HOME/.zshenv $HOME/.zprofile $BACKUP/zsh"
 
-# Backup Git settings
-eval "$RSYNC_COMMAND $HOME/.gitignore $HOME/.gitconfig $BACKUP/git"
-
 #Backup bspwm settings
 eval "$RSYNC_COMMAND $XDG_CONFIG_HOME/bspwm $BACKUP"
 
